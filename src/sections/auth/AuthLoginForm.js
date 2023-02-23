@@ -71,20 +71,20 @@ export default function AuthLoginForm() {
                 localization={{
                     variables: {
                         sign_up : {
-                            email_label: "Email-Adresse eingeben2",
-                            password_label: "Passwort eingeben",
-                            button_label: "Registrieren",
-                            email_input_placeholder: "Email-Adresse",
-                            password_input_placeholder: "Passwort",
-                            link_text: "New user? Create an account3",
+                            email_label: "Enter Email-Address",
+                            password_label: "Enter Password",
+                            button_label: "Sign up",
+                            email_input_placeholder: "Email-Address",
+                            password_input_placeholder: "Password",
+                            link_text: "New user? Create an account",
                         },
                         sign_in : {
-                            email_label: "Enter Email-Address1",
+                            email_label: "Enter Email-Address",
                             password_label: "Enter Password",
-                            button_label: "Login",
-                            email_input_placeholder: "Email-Adresse",
-                            password_input_placeholder: "Passwort",
-                            link_text: "Du hast bereits einen Account? Jetzt einloggen",
+                            button_label: "Sign in",
+                            email_input_placeholder: "Email-Address",
+                            password_input_placeholder: "Password",
+                            link_text: "You have an account? Then login",
                         },     
                         forgotten_password : {
                             link_text: "Forgot password?",
@@ -98,67 +98,13 @@ export default function AuthLoginForm() {
                 supabaseClient={supaBaseClient}
                 appearance = {{
                     theme: ThemeSupa,
-                    className: {
-                        button: "bg-gradient hover:opacity-50",
-                    }
+                    // className: {
+                    //     button: "bg-gradient hover:opacity-50",
+                    // }
                 }}
                 theme="dark"
                 providers={['google', 'facebook', 'linkedin']}
+                view="sign_up"
             />
-
-
-    // <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-    //   <Stack spacing={3}>
-    //     {!!errors.afterSubmit && <Alert severity="error">{errors.afterSubmit.message}</Alert>}
-
-    //     <RHFTextField name="email" label="Email address" />
-
-    //     <RHFTextField
-    //       name="password"
-    //       label="Password"
-    //       type={showPassword ? 'text' : 'password'}
-    //       InputProps={{
-    //         endAdornment: (
-    //           <InputAdornment position="end">
-    //             <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
-    //               <Iconify icon={showPassword ? 'eva:eye-fill' : 'eva:eye-off-fill'} />
-    //             </IconButton>
-    //           </InputAdornment>
-    //         ),
-    //       }}
-    //     />
-    //   </Stack>
-
-    //   <Stack alignItems="flex-end" sx={{ my: 2 }}>
-    //     <Link
-    //       component={NextLink}
-    //       href={PATH_AUTH.resetPassword}
-    //       variant="body2"
-    //       color="inherit"
-    //       underline="always"
-    //     >
-    //       Forgot password?
-    //     </Link>
-    //   </Stack>
-
-    //   <LoadingButton
-    //     fullWidth
-    //     color="inherit"
-    //     size="large"
-    //     type="submit"
-    //     variant="contained"
-    //     loading={isSubmitSuccessful || isSubmitting}
-    //     sx={{
-    //       bgcolor: 'text.primary',
-    //       color: (theme) => (theme.palette.mode === 'light' ? 'common.white' : 'grey.800'),
-    //       '&:hover': {
-    //         bgcolor: 'text.primary',
-    //         color: (theme) => (theme.palette.mode === 'light' ? 'common.white' : 'grey.800'),
-    //       },
-    //     }}
-    //   >
-    //     Login
-    //   </LoadingButton>
-    // </FormProvider>
   );
 }

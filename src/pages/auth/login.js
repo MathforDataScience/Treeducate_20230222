@@ -1,12 +1,10 @@
 // next
-import AuthLoginForm from '@/sections/auth/AuthLoginForm';
+// import AuthLoginForm from '@/sections/auth/AuthLoginForm';
 import Head from 'next/head';
-// auth
-// import GuestGuard from '../../_____auth/GuestGuard';
-// sections
-import Login from '../../sections/auth/Login';
 
-// import Login from '../../sections/auth/LoginAuth0';
+import Login_or_Register from '../../sections/auth/Login_or_Register';
+
+
 
 // ----------------------------------------------------------------------
 
@@ -17,11 +15,8 @@ export default function LoginPage() {
         <title> Login | Minimal UI</title>
       </Head>
 
-      {/* <GuestGuard> */}
-
         {/* <AuthLoginForm /> */}
-         <Login /> 
-      {/* </GuestGuard> */}
+         <Login_or_Register log_or_reg = "sign_in" /> 
     </>
   );
 }

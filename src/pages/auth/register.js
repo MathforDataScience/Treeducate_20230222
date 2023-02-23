@@ -3,7 +3,7 @@ import Head from 'next/head';
 // auth
 // import GuestGuard from '../../_____auth/GuestGuard';
 // sections
-import Register from '../../sections/auth/Register';
+import Login_or_Register from '../../sections/auth/Login_or_Register';
 
 // ----------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ export default function RegisterPage() {
       </Head>
 
       {/* <GuestGuard> */}
-        <Register />
+      <Login_or_Register log_or_reg = "sign_up" /> 
       {/* </GuestGuard> */}
     </>
   );
