@@ -64,8 +64,8 @@ GeneralAppPage.getLayout = (page) => <DashboardLayout>{page}</DashboardLayout>;
 //     const json = await res.json()
 //     return { json }
 // }
-
-export default function GeneralAppPage({countries}) {
+// export default function GeneralAppPage({countries}) {
+export default function GeneralAppPage() {
   const user = useUser();
   console.log(countries)
   // const countries1 = props.countries;
@@ -128,9 +128,9 @@ export default function GeneralAppPage({countries}) {
               {/* {articles.map((s) => (
             <li key={s.id}>{s.title} </li>
           ))}  */}
-          {countries.map((country) => (
+          {/* {countries.map((country) => (
             <li key={country.id}>{country.name} </li>
-          ))} 
+          ))}  */}
         </ul>
       </div>
        {/* <div><Trending /></div>  */}
@@ -163,12 +163,12 @@ export default function GeneralAppPage({countries}) {
 
 
 
-export async function getStaticProps() {
-  let { data } = await supabaseCl.from('countries').select()
+// export async function getStaticProps() {
+//   let { data } = await supabaseCl.from('countries').select()
 
-  return {
-    props: {
-     countries: data
-    },
-  }
-}
+//   return {
+//     props: {
+//      countries: data
+//     },
+//   }
+// }
