@@ -6,7 +6,7 @@ import { Masonry } from '@mui/lab';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // _mock
-import _mock from '../../../_mock';
+// import _mock from '../../../_mock';
 // layouts
 import MainLayout from '../../../layouts/main';
 // components
@@ -24,12 +24,12 @@ import {
 
 // ----------------------------------------------------------------------
 
-const _carouselsExample = [...Array(5)].map((_, index) => ({
-  id: _mock.id(index),
-  title: _mock.text.title(index),
-  image: _mock.image.cover(index),
-  description: _mock.text.description(index),
-}));
+// const _carouselsExample = [...Array(5)].map((_, index) => ({
+//   id: _mock.id(index),
+//   title: _mock.text.title(index),
+//   image: _mock.image.cover(index),
+//   description: _mock.text.description(index),
+// }));
 
 // ----------------------------------------------------------------------
 
@@ -71,28 +71,28 @@ export default function DemoCarouselsPage() {
           <Card>
             <CardHeader title="Carousel Basic 1" />
             <CardContent>
-              <CarouselBasic1 data={_carouselsExample} />
+              {/* <CarouselBasic1 data={_carouselsExample} /> */}
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader title="Carousel Basic 2" />
             <CardContent>
-              <CarouselBasic2 data={_carouselsExample} />
+              {/* <CarouselBasic2 data={_carouselsExample} /> */}
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader title="Carousel Basic 3" />
             <CardContent>
-              <CarouselBasic3 data={_carouselsExample} />
+              {/* <CarouselBasic3 data={_carouselsExample} /> */}
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader title="Carousel Basic 4" />
             <CardContent>
-              <CarouselBasic4 data={_carouselsExample} />
+              {/* <CarouselBasic4 data={_carouselsExample} /> */}
             </CardContent>
           </Card>
         </Masonry>
@@ -101,21 +101,21 @@ export default function DemoCarouselsPage() {
           <Card>
             <CardHeader title="Carousel Thumbnail" />
             <CardContent>
-              <CarouselThumbnail data={_carouselsExample} />
+              {/* <CarouselThumbnail data={_carouselsExample} /> */}
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader title="Carousel Center Mode" subheader="Customs shape & icon button" />
             <CardContent>
-              <CarouselCenterMode data={_carouselsExample} />
+              {/* <CarouselCenterMode data={_carouselsExample} /> */}
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader title="Carousel Animation" />
             <CardContent>
-              <CarouselAnimation data={_carouselsExample} />
+              {/* <CarouselAnimation data={_carouselsExample} /> */}
             </CardContent>
           </Card>
         </Stack>

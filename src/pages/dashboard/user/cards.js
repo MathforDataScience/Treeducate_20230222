@@ -5,7 +5,7 @@ import { Container, Box } from '@mui/material';
 // routes
 import { PATH_DASHBOARD } from '../../../routes/paths';
 // _mock_
-import { _userCards } from '../../../_mock/arrays';
+// import { _userCards } from '../../../_mock/arrays';
 // layouts
 import DashboardLayout from '../../../layouts/dashboard';
 // components
@@ -48,9 +48,9 @@ export default function UserCardsPage() {
             md: 'repeat(3, 1fr)',
           }}
         >
-          {_userCards.map((user) => (
+          {/* {_userCards.map((user) => (
             <UserCard key={user.id} user={user} />
-          ))}
+          ))} */}
         </Box>
       </Container>
     </>

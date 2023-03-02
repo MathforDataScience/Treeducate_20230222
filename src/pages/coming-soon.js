@@ -9,7 +9,7 @@ import useCountdown from '../hooks/useCountdown';
 // layouts
 import CompactLayout from '../layouts/compact';
 // _mock
-import { _socials } from '../_mock/arrays';
+// import { _socials } from '../_mock/arrays';
 // components
 import Iconify from '../components/iconify';
 import { CustomTextField } from '../components/custom-input';
@@ -73,7 +73,7 @@ export default function ComingSoonPage() {
       />
 
       <Stack spacing={1} alignItems="center" justifyContent="center" direction="row">
-        {_socials.map((social) => (
+        {/* {_socials.map((social) => (
           <IconButton
             key={social.name}
             sx={{
@@ -85,7 +85,7 @@ export default function ComingSoonPage() {
           >
             <Iconify icon={social.icon} />
           </IconButton>
-        ))}
+        ))} */}
       </Stack>
     </>
   );

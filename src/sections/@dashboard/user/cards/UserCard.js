@@ -5,7 +5,7 @@ import { Box, Card, Avatar, Divider, Typography, Stack, IconButton } from '@mui/
 // utils
 import { fShortenNumber } from '../../../../utils/formatNumber';
 // _mock
-import { _socials } from '../../../../_mock/arrays';
+// import { _socials } from '../../../../_mock/arrays';
 // components
 import Image from '../../../../components/image';
 import Iconify from '../../../../components/iconify';
@@ -78,7 +78,7 @@ export default function UserCard({ user }) {
         {role}
       </Typography>
 
-      <Stack direction="row" alignItems="center" justifyContent="center" sx={{ mt: 1, mb: 3 }}>
+      {/* <Stack direction="row" alignItems="center" justifyContent="center" sx={{ mt: 1, mb: 3 }}>
         {_socials.map((social) => (
           <IconButton
             key={social.name}
@@ -92,7 +92,7 @@ export default function UserCard({ user }) {
             <Iconify icon={social.icon} />
           </IconButton>
         ))}
-      </Stack>
+      </Stack> */}
 
       <Divider sx={{ borderStyle: 'dashed' }} />
 

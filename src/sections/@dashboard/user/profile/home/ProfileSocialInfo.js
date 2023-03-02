@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 // @mui
 import { Link, Card, CardHeader, Stack } from '@mui/material';
 // _mock
-import { _socials } from '../../../../../_mock/arrays';
+// import { _socials } from '../../../../../_mock/arrays';
 // components
 import Iconify from '../../../../../components/iconify';
 
@@ -25,7 +25,7 @@ export default function ProfileSocialInfo({ socialLinks }) {
       <CardHeader title="Social" />
 
       <Stack spacing={2} sx={{ p: 3 }}>
-        {_socials.map((link) => (
+        {/* {_socials.map((link) => (
           <Stack key={link.name} direction="row" sx={{ wordBreak: 'break-all' }}>
             <Iconify
               icon={link.icon}
@@ -42,7 +42,7 @@ export default function ProfileSocialInfo({ socialLinks }) {
                 twitterLink}
             </Link>
           </Stack>
-        ))}
+        ))} */}
       </Stack>
     </Card>
   );

@@ -6,7 +6,7 @@ import { Container, Tab, Tabs, Box } from '@mui/material';
 // routes
 import { PATH_DASHBOARD } from '../../../routes/paths';
 // _mock_
-import { _userPayment, _userAddressBook, _userInvoices, _userAbout } from '../../../_mock/arrays';
+// import { _userPayment, _userAddressBook, _userInvoices, _userAbout } from '../../../_mock/arrays';
 // layouts
 import DashboardLayout from '../../../layouts/dashboard';
 // components
@@ -28,6 +28,15 @@ UserAccountPage.getLayout = (page) => <DashboardLayout>{page}</DashboardLayout>;
 
 // ----------------------------------------------------------------------
 
+{/* <AccountBilling
+cards={_userPayment}
+addressBook={_userAddressBook}
+invoices={_userInvoices}
+/> */}
+
+// component: <AccountSocialLinks socialLinks={_userAbout.socialLinks} />,
+
+
 export default function UserAccountPage() {
   const { themeStretch } = useSettingsContext();
 
@@ -46,9 +55,9 @@ export default function UserAccountPage() {
       icon: <Iconify icon="ic:round-receipt" />,
       component: (
         <AccountBilling
-          cards={_userPayment}
-          addressBook={_userAddressBook}
-          invoices={_userInvoices}
+          // cards={""}
+          // addressBook={}
+          // invoices={}
         />
       ),
     },
@@ -62,7 +71,7 @@ export default function UserAccountPage() {
       value: 'social_links',
       label: 'Social links',
       icon: <Iconify icon="eva:share-fill" />,
-      component: <AccountSocialLinks socialLinks={_userAbout.socialLinks} />,
+      component: <AccountSocialLinks socialLinks={""} />,
     },
     {
       value: 'change_password',
@@ -88,7 +97,7 @@ export default function UserAccountPage() {
           ]}
         />
 
-        <Tabs value={currentTab} onChange={(event, newValue) => setCurrentTab(newValue)}>
+        {/* <Tabs value={currentTab} onChange={(event, newValue) => setCurrentTab(newValue)}>
           {TABS.map((tab) => (
             <Tab key={tab.value} label={tab.label} icon={tab.icon} value={tab.value} />
           ))}
@@ -101,7 +110,7 @@ export default function UserAccountPage() {
                 {tab.component}
               </Box>
             )
-        )}
+        )} */}
       </Container>
     </>
   );

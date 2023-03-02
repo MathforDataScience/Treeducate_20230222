@@ -8,13 +8,13 @@ import { PATH_DASHBOARD } from '../../../routes/paths';
 // auth
 // import { useAuthContext } from '../../../_____auth/useAuthContext';
 // _mock_
-import {
-  _userAbout,
-  _userFeeds,
-  _userFriends,
-  _userGallery,
-  _userFollowers,
-} from '../../../_mock/arrays';
+// import {
+//   _userAbout,
+//   _userFeeds,
+//   _userFriends,
+//   _userGallery,
+//   _userFollowers,
+// } from '../../../_mock/arrays';
 // layouts
 import DashboardLayout from '../../../layouts/dashboard';
 // components
@@ -46,38 +46,40 @@ export default function UserProfilePage() {
 
   const [currentTab, setCurrentTab] = useState('profile');
 
-  const TABS = [
-    {
-      value: 'profile',
-      label: 'Profile',
-      icon: <Iconify icon="ic:round-account-box" />,
-      component: <Profile info={_userAbout} posts={_userFeeds} />,
-    },
-    {
-      value: 'followers',
-      label: 'Followers',
-      icon: <Iconify icon="eva:heart-fill" />,
-      component: <ProfileFollowers followers={_userFollowers} />,
-    },
-    {
-      value: 'friends',
-      label: 'Friends',
-      icon: <Iconify icon="eva:people-fill" />,
-      component: (
-        <ProfileFriends
-          friends={_userFriends}
-          searchFriends={searchFriends}
-          onSearchFriends={(event) => setSearchFriends(event.target.value)}
-        />
-      ),
-    },
-    {
-      value: 'gallery',
-      label: 'Gallery',
-      icon: <Iconify icon="ic:round-perm-media" />,
-      component: <ProfileGallery gallery={_userGallery} />,
-    },
-  ];
+
+  // const TABS = [
+  //   {
+  //     value: 'profile',
+  //     label: 'Profile',
+  //     icon: <Iconify icon="ic:round-account-box" />,
+  //     component: <Profile info={_userAbout} posts={_userFeeds} />,
+  //   },
+  //   {
+  //     value: 'followers',
+  //     label: 'Followers',
+  //     icon: <Iconify icon="eva:heart-fill" />,
+  //     component: <ProfileFollowers followers={_userFollowers} />,
+  //   },
+  //   {
+  //     value: 'friends',
+  //     label: 'Friends',
+  //     icon: <Iconify icon="eva:people-fill" />,
+  //     component: (
+  //       <ProfileFriends
+  //         friends={_userFriends}
+  //         searchFriends={searchFriends}
+  //         onSearchFriends={(event) => setSearchFriends(event.target.value)}
+  //       />
+  //     ),
+  //   },
+  //   {
+  //     value: 'gallery',
+  //     label: 'Gallery',
+  //     icon: <Iconify icon="ic:round-perm-media" />,
+  //     component: <ProfileGallery gallery={_userGallery} />,
+  //   },
+  // ];
+
 
   return (
     <>
@@ -94,16 +96,16 @@ export default function UserProfilePage() {
             { name: user?.displayName },
           ]}
         />
-        <Card
+        {/* <Card
           sx={{
             mb: 3,
             height: 280,
             position: 'relative',
           }}
-        >
-          <ProfileCover name={user?.displayName} role={_userAbout.role} cover={_userAbout.cover} />
+        > */}
+          {/* <ProfileCover name={user?.displayName} role={_userAbout.role} cover={_userAbout.cover} /> */}
 
-          <Tabs
+          {/* <Tabs
             value={currentTab}
             onChange={(event, newValue) => setCurrentTab(newValue)}
             sx={{
@@ -129,7 +131,7 @@ export default function UserProfilePage() {
 
         {TABS.map(
           (tab) => tab.value === currentTab && <Box key={tab.value}> {tab.component} </Box>
-        )}
+        )} */}
       </Container>
     </>
   );

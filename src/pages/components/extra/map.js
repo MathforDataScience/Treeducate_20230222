@@ -9,8 +9,8 @@ import { PATH_PAGE } from '../../../routes/paths';
 // config
 import { MAP_API } from '../../../config-global';
 // _mock_
-import { cities as CITIES } from '../../../_mock/map/cities';
-import { countries as COUNTRIES } from '../../../_mock/map/countries';
+// import { cities as CITIES } from '../../../_mock/map/cities';
+// import { countries as COUNTRIES } from '../../../_mock/map/countries';
 // layouts
 import MainLayout from '../../../layouts/main';
 // components
@@ -117,7 +117,7 @@ export default function DemoMapPage() {
             <CardHeader title="Markers & Popups" />
             <CardContent>
               <StyledMapContainer>
-                <MapMarkersPopups {...baseSettings} data={COUNTRIES} mapStyle={THEMES.light} />
+                {/* <MapMarkersPopups {...baseSettings} data={COUNTRIES} mapStyle={THEMES.light} /> */}
               </StyledMapContainer>
             </CardContent>
           </Card>
@@ -164,7 +164,7 @@ export default function DemoMapPage() {
               <StyledMapContainer>
                 <MapViewportAnimation
                   {...baseSettings}
-                  data={CITIES.filter((city) => city.state === 'Texas')}
+                  // data={CITIES.filter((city) => city.state === 'Texas')}
                   mapStyle={THEMES.light}
                 />
               </StyledMapContainer>

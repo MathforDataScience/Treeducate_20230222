@@ -42,6 +42,9 @@ export const PATH_VILLAGE = {
   }
 };
 
+  // kanban: path(ROOTS_DASHBOARD, '/kanban'),
+  // calendar: path(ROOTS_DASHBOARD, '/calendar'),
+
 export const PATH_DASHBOARD = {
   root: ROOTS_DASHBOARD,
   kanban: path(ROOTS_DASHBOARD, '/kanban'),

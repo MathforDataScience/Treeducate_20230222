@@ -3,7 +3,7 @@ import { m } from 'framer-motion';
 // @mui
 import { Box, Paper } from '@mui/material';
 // _mock
-import _mock from '../../../../../_mock';
+// import _mock from '../../../../../_mock';
 // components
 import { MotionContainer } from '../../../../../components/animate';
 //
@@ -13,13 +13,13 @@ import getVariant from '../getVariant';
 
 const TEXT = 'Minimals';
 
-const IMG = [
-  _mock.image.cover(2),
-  _mock.image.cover(3),
-  _mock.image.cover(4),
-  _mock.image.cover(5),
-  _mock.image.cover(8),
-];
+// const IMG = [
+//   _mock.image.cover(2),
+//   _mock.image.cover(3),
+//   _mock.image.cover(4),
+//   _mock.image.cover(5),
+//   _mock.image.cover(8),
+// ];
 
 ContainerView.propTypes = {
   isMulti: PropTypes.bool,
@@ -28,7 +28,7 @@ ContainerView.propTypes = {
 };
 
 export default function ContainerView({ isText, isMulti, selectVariant, ...other }) {
-  const items = isMulti ? IMG : IMG.slice(0, 1);
+  // const items = isMulti ? IMG : IMG.slice(0, 1);
 
   return (
     <Paper
@@ -56,7 +56,7 @@ export default function ContainerView({ isText, isMulti, selectVariant, ...other
         </MotionContainer>
       ) : (
         <MotionContainer>
-          {items.map((row, index) => (
+          {/* {items.map((row, index) => (
             <Box
               key={index}
               component={m.img}
@@ -71,7 +71,7 @@ export default function ContainerView({ isText, isMulti, selectVariant, ...other
                 boxShadow: (theme) => theme.customShadows.z8,
               }}
             />
-          ))}
+          ))} */}
         </MotionContainer>
       )}
     </Paper>

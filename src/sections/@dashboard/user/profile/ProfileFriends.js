@@ -14,7 +14,7 @@ import {
   InputAdornment,
 } from '@mui/material';
 // _mock
-import { _socials } from '../../../../_mock/arrays';
+// import { _socials } from '../../../../_mock/arrays';
 // components
 import Iconify from '../../../../components/iconify';
 import MenuPopover from '../../../../components/menu-popover';
@@ -132,7 +132,7 @@ function FriendCard({ friend }) {
         </Typography>
 
         <Stack alignItems="center" justifyContent="center" direction="row">
-          {_socials.map((social) => (
+          {/* {_socials.map((social) => (
             <IconButton
               key={social.name}
               sx={{
@@ -144,7 +144,7 @@ function FriendCard({ friend }) {
             >
               <Iconify icon={social.icon} />
             </IconButton>
-          ))}
+          ))} */}
         </Stack>
 
         <IconButton

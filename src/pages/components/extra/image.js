@@ -5,7 +5,7 @@ import { Box, Card, Container, Typography, CardHeader } from '@mui/material';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // _mock
-import _mock from '../../../_mock';
+// import _mock from '../../../_mock';
 // layouts
 import MainLayout from '../../../layouts/main';
 // components
@@ -16,10 +16,10 @@ import CustomBreadcrumbs from '../../../components/custom-breadcrumbs';
 
 const RATIO = ['4/3', '3/4', '6/4', '4/6', '16/9', '9/16', '21/9', '9/21', '1/1'];
 
-const IMAGES = RATIO.map((value, index) => ({
-  value,
-  url: _mock.image.cover(index + 1),
-}));
+// const IMAGES = RATIO.map((value, index) => ({
+//   value,
+//   url: _mock.image.cover(index + 1),
+// }));
 
 // ----------------------------------------------------------------------
 
@@ -68,7 +68,7 @@ export default function DemoImagePage() {
             }}
             sx={{ p: 3 }}
           >
-            {IMAGES.map((img) => (
+            {/* {IMAGES.map((img) => (
               <Box key={img.value}>
                 <Typography variant="overline" sx={{ color: 'text.secondary' }}>
                   {img.value}
@@ -82,7 +82,7 @@ export default function DemoImagePage() {
                   sx={{ borderRadius: 1 }}
                 />
               </Box>
-            ))}
+            ))} */}
           </Box>
         </Card>
       </Container>

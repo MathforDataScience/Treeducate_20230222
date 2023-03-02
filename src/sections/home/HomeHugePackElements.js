@@ -38,7 +38,7 @@ import { bgGradient } from '../../utils/cssStyles';
 // routes
 import { PATH_PAGE } from '../../routes/paths';
 // _mock
-import _mock from '../../_mock';
+// import _mock from '../../_mock';
 // components
 import Label from '../../components/label';
 import Image from '../../components/image';
@@ -265,32 +265,32 @@ function Content() {
         </m.div>
 
         <m.div variants={varFade().in}>
-          <Chip
+          {/* <Chip
             color="warning"
             onDelete={() => {}}
             avatar={<CustomAvatar src={_mock.image.avatar(2)} />}
             label="Chip"
-          />
+          /> */}
         </m.div>
       </StyledRow>
 
       {/* Row 3 */}
       <StyledRow>
         <m.div variants={varFade().in}>
-          <CustomAvatar
+          {/* <CustomAvatar
             src={_mock.image.avatar(19)}
             BadgeProps={{
               badgeContent: <BadgeStatus status="online" />,
             }}
-          />
+          /> */}
         </m.div>
 
         <m.div variants={varFade().in}>
-          <CustomAvatarGroup>
+          {/* <CustomAvatarGroup>
             {[...Array(8)].map((_, index) => (
               <CustomAvatar key={index} src={_mock.image.avatar(index)} />
             ))}
-          </CustomAvatarGroup>
+          </CustomAvatarGroup> */}
         </m.div>
 
         {mounted && (
@@ -470,7 +470,7 @@ const cardPost = (
       boxShadow: (theme) => theme.customShadows.z24,
     }}
   >
-    <CardHeader
+    {/* <CardHeader
       title="Jayvion Simon"
       subheader="California, United States"
       avatar={
@@ -485,8 +485,8 @@ const cardPost = (
       titleTypographyProps={{ typography: 'subtitle2', sx: { mb: 0.25 } }}
       subheaderTypographyProps={{ typography: 'caption' }}
       sx={{ p: 2 }}
-    />
-    <Image alt="cover" src={_mock.image.cover(12)} ratio="16/9" />
+    /> */}
+    {/* <Image alt="cover" src={_mock.image.cover(12)} ratio="16/9" /> */}
 
     <Typography variant="body2" sx={{ color: 'text.secondary', pt: 2, px: 2 }}>
       Phasellus dolor. Fusce egestas elit eget lorem. Quisque id odio.

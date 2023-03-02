@@ -7,7 +7,7 @@ import useResponsive from '../../../hooks/useResponsive';
 // utils
 import { fDate } from '../../../utils/formatTime';
 // _mock
-import { _socials } from '../../../_mock/arrays';
+// import { _socials } from '../../../_mock/arrays';
 // components
 import Image from '../../../components/image';
 import Iconify from '../../../components/iconify';
@@ -106,7 +106,7 @@ export default function BlogPostHero({ post }) {
           icon={<Iconify icon="eva:share-fill" />}
           sx={{ '& .MuiSpeedDial-fab': { width: 48, height: 48 } }}
         >
-          {_socials.map((action) => (
+          {/* {_socials.map((action) => (
             <SpeedDialAction
               key={action.name}
               icon={<Iconify icon={action.icon} sx={{ color: action.color }} />}
@@ -114,7 +114,7 @@ export default function BlogPostHero({ post }) {
               tooltipPlacement="top"
               FabProps={{ color: 'default' }}
             />
-          ))}
+          ))} */}
         </SpeedDial>
       </StyledFooter>
 

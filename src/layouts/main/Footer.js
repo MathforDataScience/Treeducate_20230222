@@ -6,7 +6,7 @@ import { Box, Grid, Link, Stack, Divider, Container, Typography, IconButton } fr
 // routes
 import { PATH_PAGE } from '../../routes/paths';
 // _mock
-import { _socials } from '../../_mock/arrays';
+// import { _socials } from '../../_mock/arrays';
 // components
 import Logo from '../../components/logo';
 import Iconify from '../../components/iconify';
@@ -101,7 +101,7 @@ export default function Footer() {
               version of Material-UI ©, ready to be customized to your style.
             </Typography>
 
-            <Stack
+            {/* <Stack
               spacing={1}
               direction="row"
               justifyContent={{ xs: 'center', md: 'flex-start' }}
@@ -115,7 +115,7 @@ export default function Footer() {
                   <Iconify icon={social.icon} />
                 </IconButton>
               ))}
-            </Stack>
+            </Stack> */}
           </Grid>
 
           <Grid item xs={12} md={7}>

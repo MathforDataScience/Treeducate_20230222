@@ -8,7 +8,7 @@ import useResponsive from '../../hooks/useResponsive';
 // utils
 import { fPercent } from '../../utils/formatNumber';
 // _mock_
-import { _skills } from '../../_mock/arrays';
+// import { _skills } from '../../_mock/arrays';
 // components
 import Image from '../../components/image';
 import Iconify from '../../components/iconify';
@@ -94,11 +94,11 @@ export default function AboutWhat() {
             </m.div>
 
             <Box sx={{ my: 5 }}>
-              {_skills.map((progress) => (
+              {/* {_skills.map((progress) => (
                 <m.div key={progress.label} variants={varFade().inRight}>
                   <ProgressItem progress={progress} />
                 </m.div>
-              ))}
+              ))} */}
             </Box>
 
             <m.div variants={varFade().inRight}>

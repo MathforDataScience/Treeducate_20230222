@@ -5,7 +5,7 @@ import { Typography, ListItemText, ListItemAvatar, MenuItem } from '@mui/materia
 // utils
 import { fToNow } from '../../../utils/formatTime';
 // _mock_
-import { _contacts } from '../../../_mock/arrays';
+// import { _contacts } from '../../../_mock/arrays';
 // components
 import { CustomAvatar } from '../../../components/custom-avatar';
 import Iconify from '../../../components/iconify';
@@ -48,11 +48,12 @@ export default function ContactsPopover() {
 
       <MenuPopover open={openPopover} onClose={handleClosePopover} sx={{ width: 320 }}>
         <Typography variant="h6" sx={{ p: 1.5 }}>
-          Contacts <Typography component="span">({_contacts.length})</Typography>
+          Contacts 
+          {/* <Typography component="span">({_contacts.length})</Typography> */}
         </Typography>
 
         <Scrollbar sx={{ height: ITEM_HEIGHT * 6 }}>
-          {_contacts.map((contact) => (
+          {/* {_contacts.map((contact) => (
             <MenuItem key={contact.id} sx={{ height: ITEM_HEIGHT }}>
               <ListItemAvatar>
                 <CustomAvatar
@@ -70,7 +71,7 @@ export default function ContactsPopover() {
                 secondaryTypographyProps={{ typography: 'caption' }}
               />
             </MenuItem>
-          ))}
+          ))} */}
         </Scrollbar>
       </MenuPopover>
     </>

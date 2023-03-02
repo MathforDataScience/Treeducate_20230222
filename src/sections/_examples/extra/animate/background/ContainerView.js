@@ -3,7 +3,7 @@ import { m } from 'framer-motion';
 // @mui
 import { Box, Paper } from '@mui/material';
 // _mock
-import _mock from '../../../../../_mock';
+// import _mock from '../../../../../_mock';
 //
 import getVariant from '../getVariant';
 
@@ -26,7 +26,7 @@ export default function ContainerView({ selectVariant, ...other }) {
       }}
       {...other}
     >
-      {isKenburns ? (
+      {/* {isKenburns ? (
         <Box
           component={m.img}
           src={_mock.image.cover(7)}
@@ -35,7 +35,7 @@ export default function ContainerView({ selectVariant, ...other }) {
         />
       ) : (
         <Box component={m.div} {...getVariant(selectVariant)} sx={{ height: 1, width: 1 }} />
-      )}
+      )} */}
     </Paper>
   );
 }

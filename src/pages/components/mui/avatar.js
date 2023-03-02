@@ -7,16 +7,16 @@ import { Masonry } from '@mui/lab';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // _mock
-import _mock from '../../../_mock';
+// import _mock from '../../../_mock';
 // layouts
 import MainLayout from '../../../layouts/main';
 // components
-import Iconify from '../../../components/iconify';
-import BadgeStatus from '../../../components/badge-status';
+// import Iconify from '../../../components/iconify';
+// import BadgeStatus from '../../../components/badge-status';
 import CustomBreadcrumbs from '../../../components/custom-breadcrumbs';
-import { CustomAvatar, CustomAvatarGroup } from '../../../components/custom-avatar';
+// import { CustomAvatar, CustomAvatarGroup } from '../../../components/custom-avatar';
 // sections
-import { Block } from '../../../sections/_examples/Block';
+// import { Block } from '../../../sections/_examples/Block';
 
 // ----------------------------------------------------------------------
 
@@ -67,7 +67,7 @@ export default function MUIAvatarPage() {
 
       <Container sx={{ my: 10 }}>
         <Masonry columns={{ xs: 1, md: 2 }} spacing={3}>
-          <Block
+          {/* <Block
             title="Image avatars"
             sx={{
               display: 'flex',
@@ -79,9 +79,9 @@ export default function MUIAvatarPage() {
             {[1, 2, 3, 4, 5].map((_, index) => (
               <CustomAvatar key={index} alt="Remy Sharp" src={_mock.image.avatar(index + 1)} />
             ))}
-          </Block>
+          </Block> */}
 
-          <Block
+          {/* <Block
             title="Letter avatars"
             sx={{
               display: 'flex',
@@ -95,9 +95,9 @@ export default function MUIAvatarPage() {
                 <CustomAvatar name={_mock.name.fullName(index)} />
               </Tooltip>
             ))}
-          </Block>
+          </Block> */}
 
-          <Block
+          {/* <Block
             title="Icon avatars"
             sx={{
               display: 'flex',
@@ -127,9 +127,9 @@ export default function MUIAvatarPage() {
                 <Iconify icon="eva:folder-add-outline" width={24} />
               </CustomAvatar>
             ))}
-          </Block>
+          </Block> */}
 
-          <Block
+          {/* <Block
             title="Grouped"
             sx={{
               display: 'flex',
@@ -159,8 +159,8 @@ export default function MUIAvatarPage() {
                 ))}
               </CustomAvatarGroup>
             </Tooltip>
-          </Block>
-
+          </Block> */}
+{/* 
           <Block
             title="With badge"
             sx={{
@@ -198,9 +198,9 @@ export default function MUIAvatarPage() {
                 }}
               />
             ))}
-          </Block>
+          </Block> */}
 
-          <Block
+          {/* <Block
             title="Sizes"
             sx={{
               display: 'flex',
@@ -209,15 +209,15 @@ export default function MUIAvatarPage() {
               '& > *': { mx: 1 },
             }}
           >
-            {[24, 32, 48, 56, 64, 80, 128].map((size, index) => (
+           {[24, 32, 48, 56, 64, 80, 128].map((size, index) => (
               <CustomAvatar
                 key={size}
                 alt="Travis Howard"
                 src={_mock.image.avatar(index + 4)}
                 sx={{ width: size, height: size }}
               />
-            ))}
-          </Block>
+           ))} 
+          </Block> */}
         </Masonry>
       </Container>
     </>

@@ -6,11 +6,11 @@ import { Box, Card, Stack, Container, AppBar, Typography } from '@mui/material';
 import { PATH_PAGE } from '../../../routes/paths';
 import { NAV } from '../../../config-global';
 // _mock
-import _mock from '../../../_mock';
+// import _mock from '../../../_mock';
 // layouts
 import MainLayout from '../../../layouts/main';
 // components
-import Image from '../../../components/image';
+// import Image from '../../../components/image';
 import Iconify from '../../../components/iconify';
 import CustomBreadcrumbs from '../../../components/custom-breadcrumbs';
 import {
@@ -81,12 +81,12 @@ export default function DemoMegaMenuPage() {
             <MegaMenuDesktopVertical data={data} />
           </Card>
 
-          <Image
+          {/* <Image
             alt="any photo"
             src={_mock.image.cover(18)}
             ratio="21/9"
             sx={{ borderRadius: 1 }}
-          />
+          /> */}
         </Stack>
       </Container>
     </>
@@ -96,9 +96,13 @@ export default function DemoMegaMenuPage() {
 // MOCK DATA
 // ----------------------------------------------------------------------
 
+// name: _mock.text.title(index),
+// image: _mock.image.cover(index),
+// path: '#',
+
 export const _products = [...Array(10)].map((_, index) => ({
-  name: _mock.text.title(index),
-  image: _mock.image.cover(index),
+  name: "",
+  image: "",
   path: '#',
 }));
 

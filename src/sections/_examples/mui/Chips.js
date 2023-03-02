@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 // @mui
 import { Avatar, Chip, Stack, Paper } from '@mui/material';
 // _mock
-import _mock from '../../../_mock';
+// import _mock from '../../../_mock';
 // components
 import Iconify from '../../../components/iconify';
 //
@@ -42,7 +42,7 @@ export default function Chips({ variant = 'filled' }) {
 
         <Chip variant={variant} clickable label="Default clickable" avatar={<Avatar>M</Avatar>} />
 
-        <Chip
+        {/* <Chip
           variant={variant}
           label="Primary deletable"
           avatar={<Avatar alt="Natacha" src={_mock.image.avatar(1)} />}
@@ -56,7 +56,7 @@ export default function Chips({ variant = 'filled' }) {
           label="Primary clickable"
           avatar={<Avatar alt="Natacha" src={_mock.image.avatar(1)} />}
           color="primary"
-        />
+        /> */}
 
         <Chip
           variant={variant}

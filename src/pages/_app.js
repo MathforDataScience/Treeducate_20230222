@@ -46,7 +46,7 @@ import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import { SessionContextProvider } from '@supabase/auth-helpers-react'
 import { useState } from 'react'
 
-// import { RecoilRoot } from 'recoil';
+import { RecoilRoot } from 'recoil';
 
 // Check our docs
 // https://docs.minimals.cc/authentication/js-version
@@ -82,7 +82,7 @@ export default function MyApp(props) {
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <SessionContextProvider supabaseClient={supabase} initialSession={pageProps.initialSession}>       
-        {/* <RecoilRoot>  */}
+        <RecoilRoot> 
 
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <SettingsProvider>
@@ -102,7 +102,7 @@ export default function MyApp(props) {
             </SettingsProvider>
           </LocalizationProvider>
 
-        {/* </RecoilRoot>  */}
+        </RecoilRoot> 
       </SessionContextProvider> 
     </CacheProvider>
   );

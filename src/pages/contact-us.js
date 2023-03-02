@@ -5,7 +5,7 @@ import { Container, Box } from '@mui/material';
 // layouts
 import MainLayout from '../layouts/main';
 // _mock
-import { _mapContact } from '../_mock/arrays';
+// import { _mapContact } from '../_mock/arrays';
 // sections
 import { ContactHero, ContactForm, ContactMap } from '../sections/contact';
 
@@ -35,7 +35,7 @@ export default function ContactPage() {
         >
           <ContactForm />
 
-          <ContactMap contacts={_mapContact} />
+          {/* <ContactMap contacts={_mapContact} /> */}
         </Box>
       </Container>
     </>

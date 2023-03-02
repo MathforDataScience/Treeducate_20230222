@@ -5,7 +5,7 @@ import { useRef } from 'react';
 import { useTheme, alpha } from '@mui/material/styles';
 import { Box, Stack, Card, Button, Container, Typography, IconButton } from '@mui/material';
 // _mock_
-import { _carouselsMembers, _socials } from '../../_mock/arrays';
+// import { _carouselsMembers, _socials } from '../../_mock/arrays';
 // components
 import Image from '../../components/image';
 import Iconify from '../../components/iconify';
@@ -76,7 +76,7 @@ export default function AboutTeam() {
       </m.div>
 
       <Box sx={{ position: 'relative' }}>
-        <CarouselArrows
+        {/* <CarouselArrows
           filled
           shape="rounded"
           onNext={handleNext}
@@ -106,7 +106,7 @@ export default function AboutTeam() {
               </Box>
             ))}
           </Carousel>
-        </CarouselArrows>
+        </CarouselArrows> */}
       </Box>
 
       <Button

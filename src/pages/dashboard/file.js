@@ -9,7 +9,7 @@ import { PATH_DASHBOARD } from '../../routes/paths';
 // hooks
 import useResponsive from '../../hooks/useResponsive';
 // _mock
-import { _folders, _files } from '../../_mock/arrays';
+// import { _folders, _files } from '../../_mock/arrays';
 // layouts
 import DashboardLayout from '../../layouts/dashboard';
 // components
@@ -225,7 +225,7 @@ export default function GeneralFilePage() {
               />
 
               <Scrollbar>
-                <Stack direction="row" spacing={3} sx={{ pb: 3 }}>
+                {/* <Stack direction="row" spacing={3} sx={{ pb: 3 }}>
                   {_folders.map((folder) => (
                     <FileFolderCard
                       key={folder.id}
@@ -238,7 +238,7 @@ export default function GeneralFilePage() {
                       }}
                     />
                   ))}
-                </Stack>
+                </Stack> */}
               </Scrollbar>
 
               <FilePanel
@@ -249,13 +249,13 @@ export default function GeneralFilePage() {
               />
 
               <Stack spacing={2}>
-                {_files.slice(0, 5).map((file) => (
+                {/* {_files.slice(0, 5).map((file) => (
                   <FileGeneralRecentCard
                     key={file.id}
                     file={file}
                     onDelete={() => console.log('DELETE', file.id)}
                   />
-                ))}
+                ))} */}
               </Stack>
             </div>
           </Grid>

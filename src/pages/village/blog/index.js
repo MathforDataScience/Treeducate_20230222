@@ -8,13 +8,13 @@ import { Container, Grid, Stack, Button, ButtonGroup } from '@mui/material';
 // layouts
 import DashboardLayout from '../../../layouts/dashboard';
 // _mock_
-import {
-  _appFeatured,
-  // _appAuthors,
-  // _appInstalled,
-  // _appRelated,
-  // _appInvoices,
-} from '../../../_mock/arrays';
+// import {
+//   _appFeatured,
+//   _appAuthors,
+//   _appInstalled,
+//   _appRelated,
+//   _appInvoices,
+// } from '../../../_mock/arrays';
 // components
 import { useSettingsContext } from '../../../components/settings';
 // sections

@@ -17,21 +17,21 @@ import {
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // _mock
-import _mock from '../../../_mock';
+// import _mock from '../../../_mock';
 // layouts
 import MainLayout from '../../../layouts/main';
 // components
-import Image from '../../../components/image';
+// import Image from '../../../components/image';
 import Lightbox from '../../../components/lightbox';
 import CustomBreadcrumbs from '../../../components/custom-breadcrumbs';
 
 // ----------------------------------------------------------------------
 
-const imagesLightbox = [...Array(8)].map((_, index) => ({
-  src: _mock.image.cover(index + 1),
-  title: 'Flamingo',
-  description: 'Vicko Mozara \n Veliki zali, Dubravica, Croatia',
-}));
+// const imagesLightbox = [...Array(8)].map((_, index) => ({
+//   src: _mock.image.cover(index + 1),
+//   title: 'Flamingo',
+//   description: 'Vicko Mozara \n Veliki zali, Dubravica, Croatia',
+// }));
 
 // ----------------------------------------------------------------------
 
@@ -59,10 +59,10 @@ export default function DemoLightboxPage() {
 
   const [selectedImage, setSelectedImage] = useState(-1);
 
-  const handleOpenBasic = (imageUrl) => {
-    const imageIndex = imagesLightbox.findIndex((image) => image.src === imageUrl);
-    setSelectedImage(imageIndex);
-  };
+  // const handleOpenBasic = (imageUrl) => {
+  //   const imageIndex = imagesLightbox.findIndex((image) => image.src === imageUrl);
+  //   setSelectedImage(imageIndex);
+  // };
 
   const handleCloseBasic = () => {
     setSelectedImage(-1);
@@ -110,7 +110,7 @@ export default function DemoLightboxPage() {
                   md: 'repeat(4, 1fr)',
                 }}
               >
-                {imagesLightbox.map((img) => (
+                {/* {imagesLightbox.map((img) => (
                   <Image
                     key={img.src}
                     alt={img.src}
@@ -122,7 +122,7 @@ export default function DemoLightboxPage() {
                       cursor: 'pointer',
                     }}
                   />
-                ))}
+                ))} */}
               </Box>
             </Grid>
 
@@ -225,7 +225,7 @@ export default function DemoLightboxPage() {
         </Card>
       </Container>
 
-      <Lightbox
+      {/* <Lightbox
         disabledZoom={state.disabledZoom}
         disabledTotal={state.disabledTotal}
         disabledVideo={state.disabledVideo}
@@ -252,7 +252,7 @@ export default function DemoLightboxPage() {
             ],
           },
         ]}
-      />
+      /> */}
     </>
   );
 }

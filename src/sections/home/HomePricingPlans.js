@@ -9,7 +9,7 @@ import useResponsive from '../../hooks/useResponsive';
 // routes
 import { PATH_MINIMAL_ON_STORE } from '../../routes/paths';
 // _mock_
-import { _homePlans } from '../../_mock/arrays';
+// import { _homePlans } from '../../_mock/arrays';
 // components
 import SvgColor from '../../components/svg-color';
 import Iconify from '../../components/iconify';
@@ -77,22 +77,22 @@ function Content() {
       gridTemplateColumns="repeat(3, 1fr)"
       sx={{ borderRadius: 2, border: (theme) => `dashed 1px ${theme.palette.divider}` }}
     >
-      {_homePlans.map((plan) => (
+      {/* {_homePlans.map((plan) => (
         <m.div key={plan.license} variants={varFade().in}>
           <PlanCard key={plan.license} plan={plan} />
         </m.div>
-      ))}
+      ))} */}
     </Box>
   );
 
   const mobileList = (
     <>
       <Stack alignItems="center" sx={{ mb: 5 }}>
-        <Tabs value={currentTab} onChange={(event, newValue) => setCurrentTab(newValue)}>
+        {/* <Tabs value={currentTab} onChange={(event, newValue) => setCurrentTab(newValue)}>
           {_homePlans.map((tab) => (
             <Tab key={tab.license} value={tab.license} label={tab.license} />
           ))}
-        </Tabs>
+        </Tabs> */}
       </Stack>
 
       <Box
@@ -101,7 +101,7 @@ function Content() {
           border: (theme) => `dashed 1px ${theme.palette.divider}`,
         }}
       >
-        {_homePlans.map(
+        {/* {_homePlans.map(
           (tab) =>
             tab.license === currentTab && (
               <PlanCard
@@ -110,7 +110,7 @@ function Content() {
                 sx={{ borderLeft: (theme) => `dashed 1px ${theme.palette.divider}` }}
               />
             )
-        )}
+        )} */}
       </Box>
     </>
   );

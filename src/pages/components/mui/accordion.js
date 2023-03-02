@@ -14,7 +14,7 @@ import {
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // _mock_
-import _mock from '../../../_mock';
+// import _mock from '../../../_mock';
 // layouts
 import MainLayout from '../../../layouts/main';
 // components
@@ -25,13 +25,13 @@ import { Block } from '../../../sections/_examples/Block';
 
 // ----------------------------------------------------------------------
 
-const _accordions = [...Array(4)].map((_, index) => ({
-  id: _mock.id(index),
-  value: `panel${index + 1}`,
-  heading: `Accordion ${index + 1}`,
-  subHeading: _mock.text.title(index),
-  detail: _mock.text.description(index),
-}));
+// const _accordions = [...Array(4)].map((_, index) => ({
+//   id: _mock.id(index),
+//   value: `panel${index + 1}`,
+//   heading: `Accordion ${index + 1}`,
+//   subHeading: _mock.text.title(index),
+//   detail: _mock.text.description(index),
+// }));
 
 // ----------------------------------------------------------------------
 
@@ -77,7 +77,7 @@ export default function MUIAccordionPage() {
       <Container sx={{ my: 10 }}>
         <Stack spacing={5}>
           <Block title="Simple">
-            {_accordions.map((accordion, index) => (
+            {/* {_accordions.map((accordion, index) => (
               <Accordion key={accordion.value} disabled={index === 3}>
                 <AccordionSummary expandIcon={<Iconify icon="eva:arrow-ios-downward-fill" />}>
                   <Typography variant="subtitle1">{accordion.heading}</Typography>
@@ -86,11 +86,11 @@ export default function MUIAccordionPage() {
                   <Typography>{accordion.detail}</Typography>
                 </AccordionDetails>
               </Accordion>
-            ))}
+            ))} */}
           </Block>
 
           <Block title="Controlled">
-            {_accordions.map((item, index) => (
+            {/* {_accordions.map((item, index) => (
               <Accordion
                 key={item.value}
                 disabled={index === 3}
@@ -107,7 +107,7 @@ export default function MUIAccordionPage() {
                   <Typography>{item.detail}</Typography>
                 </AccordionDetails>
               </Accordion>
-            ))}
+            ))} */}
           </Block>
         </Stack>
       </Container>
