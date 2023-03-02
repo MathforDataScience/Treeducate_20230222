@@ -24,10 +24,7 @@ import { useSupabaseClient, useUser }    from '@supabase/auth-helpers-react';
 
 import BlogPostItemOne  from "../sections/blog_components/BlogPostItemOne";
 
-// import NextLink from 'next/link';
-// import { Image } from './image';
-// import { TextMaxLine } from './text-max-line';
-// import { fDate } from '../utils/formatTime';
+
 
 const DotStyle = styled('span')(({ theme }) => ({
     width: 4,

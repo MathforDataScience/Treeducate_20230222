@@ -133,7 +133,7 @@ export default function GeneralAppPage({countries}) {
           ))} 
         </ul>
       </div>
-       <div><Trending /></div> 
+       {/* <div><Trending /></div>  */}
 
               {/* <AppWidget
                 title="Conversion"
