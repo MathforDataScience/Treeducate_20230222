@@ -41,11 +41,9 @@ const Trending = () => {
     // console.log(countries);
 
     const { themeStretch } = useSettingsContext();
-
-    const [articles, setArticle ] = useRecoilState(articlesState);
-
     const formatter = buildFormatter(deStrings);
 
+    const [articles, setArticle ] = useRecoilState(articlesState);
     useEffect(() => {
 
         const getData = async () => {

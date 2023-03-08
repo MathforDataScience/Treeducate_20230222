@@ -31,11 +31,16 @@ import { useSupabaseClient, useUser }    from '@supabase/auth-helpers-react';
 import Banner  from "../components/Banner";
 import Trending from '../components/Trending';
 
-import { useEffect, useState } from "react";
+import { fetchArticles } from "../utils/fetchArticles";
 
+import { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
+import { articlesState } from "../../atoms/articleAtom";
+
+// import { BiTrendingUp } from "react-icons/bi";
 // import { use } from "react"
 
-import { useRecoilState } from "recoil";
+
 // import { articlesState } from "../../atoms/articleAtom";
 
 // ----------------------------------------------------------------------
@@ -65,12 +70,19 @@ GeneralAppPage.getLayout = (page) => <DashboardLayout>{page}</DashboardLayout>;
 //     return { json }
 // }
 
-export default function GeneralAppPage({countries}) {
+export default function GeneralAppPage() {
   const user = useUser();
-  console.log(countries)
-  // const countries1 = props.countries;
+  // console.log(articles)
 
-  // const [articles, setArticle ] = useRecoilState(articlesState);
+  const [articles, setArticle ] = useRecoilState(articlesState);
+  useEffect(() => {
+
+      const getData = async () => {
+          const data = await fetchArticles();
+          setArticle(data)
+      };
+      getData();
+  }, [])
 
   // const [loading, setLoading] = useState(false);
 
@@ -119,40 +131,20 @@ export default function GeneralAppPage({countries}) {
                 img="/banner.png"
               />
             </div>
+            <div>
+                <ul>
+                  {articles?.map((s) => (
+                    <li key={s.id}>{s.title} </li>
+                  ))} 
+                </ul>
+              </div>
             </Grid>
 
           <Grid item xs={12} md={6} lg={4}>
             <Stack spacing={3}>
-              <div>
-          <ul>
-              {/* {articles.map((s) => (
-            <li key={s.id}>{s.title} </li>
-          ))}  */}
-          {countries.map((country) => (
-            <li key={country.id}>{country.name} </li>
-          ))} 
-        </ul>
-      </div>
-       <div><Trending /></div> 
 
-              {/* <AppWidget
-                title="Conversion"
-                total={38566}
-                icon="eva:person-fill"
-                chart={{
-                  series: 48,
-                }}
-              />
+              <div><Trending /></div> 
 
-              <AppWidget
-                title="Applications"
-                total={55566}
-                icon="eva:email-fill"
-                color="info"
-                chart={{
-                  series: 75,
-                }}
-              /> */}
             </Stack>
           </Grid>
         </Grid>
@@ -162,13 +154,3 @@ export default function GeneralAppPage({countries}) {
 }
 
 
-
-export async function getStaticProps() {
-  let { data } = await supabaseCl.from('countries').select()
-
-  return {
-    props: {
-     countries: data
-    },
-  }
-}
