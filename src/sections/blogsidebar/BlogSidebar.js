@@ -14,15 +14,18 @@ import BlogSidebarRecentPosts from './BlogSidebarRecentPosts';
 
 // ----------------------------------------------------------------------
 
-BlogSidebar.propTypes = {
-  advertisement: PropTypes.object,
-  author: PropTypes.object,
-  recentPosts: PropTypes.object,
-  sx: PropTypes.object,
-};
+// BlogSidebar.propTypes = {
+//   advertisement: PropTypes.object,
+//   author: PropTypes.object,
+//   recentPosts: PropTypes.object,
+//   sx: PropTypes.object,
+// };
 // { author, recentPosts, sx, ...other }
 export default function BlogSidebar({recentPosts}) {
   // const isDesktop = useResponsive('up', 'md');
+
+  console.log("Marker 22")
+  console.log(recentPosts)
 
   return (
     <>
@@ -39,7 +42,7 @@ export default function BlogSidebar({recentPosts}) {
         }}
         // {...other}
       >
-        {"BlogSideBar"}
+        {/* {"BlogSideBar"} */}
         <BlogSidebarCategories />
         <BlogSidebarRecentPosts recentPosts={recentPosts} />
         <BlogSidebarPopularTags />

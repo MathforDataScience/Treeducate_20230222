@@ -8,7 +8,7 @@ import { Stack } from '@mui/material';
 import { fDate } from '../../utils/formatTime';
 // components
 // import Image from '../../components/image';
-// import TextMaxLine from '../../components/text-max-line';
+import TextMaxLine from '../../components/text-max-line';
 // ----------------------------------------------------------------------
 
 const DotStyle = styled('span')(({ theme }) => ({
@@ -36,11 +36,15 @@ BlogPostItemMobile.propTypes = {
 };
 
 export default function BlogPostItemMobile({ post, path, onSiderbar }) {
-  const { slug, frontmatter } = post;
-  const { title, duration, coverImg, createdAt } = frontmatter;
+  // const { slug, frontmatter } = post;
 
-  const as = `${path}/${slug}`;
-  const href = `${path}/[slug]`;
+  console.log("Marker 24")
+  console.log(post)
+
+  // const { title, duration, coverImg, createdAt } = frontmatter;
+
+  // const as = `${path}/${slug}`;
+  // const href = `${path}/[slug]`;
 
   return (
     <Stack
@@ -61,11 +65,11 @@ export default function BlogPostItemMobile({ post, path, onSiderbar }) {
       /> */}
 
       <Stack spacing={onSiderbar ? 0.5 : 1}>
-        <NextLink passHref as={as} href={href}>
-          {/* <TextMaxLine variant={onSiderbar ? 'subtitle2' : 'h6'} asLink>
-            {title}
-          </TextMaxLine> */}
-        </NextLink>
+        {/* <NextLink passHref as={as} href={href}> */}
+          <TextMaxLine variant={onSiderbar ? 'subtitle2' : 'h6'} asLink>
+            {post.title}
+          </TextMaxLine>
+        {/* </NextLink> */}
 
         <Stack
           direction="row"
@@ -73,11 +77,14 @@ export default function BlogPostItemMobile({ post, path, onSiderbar }) {
           alignItems="center"
           sx={{ typography: 'caption', color: 'text.disabled' }}
         >
-          {fDate(createdAt)}
+          {fDate(post.inserted_at)}
           <DotStyle />
-          {duration}
+          {/* {duration} */} 8 minutes
         </Stack>
       </Stack>
     </Stack>
   );
 }
+
+
+// wieder rückandern und in der DB anpassen: {fDate(createdAt)}

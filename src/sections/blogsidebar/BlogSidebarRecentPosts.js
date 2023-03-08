@@ -15,16 +15,18 @@ BlogSidebarRecentPosts.propTypes = {
 
 export default function BlogSidebarRecentPosts({ recentPosts }) {
   const { list, path } = recentPosts;
+  console.log("Marker 23")
+  console.log(recentPosts)
 
   return (
     <Stack spacing={3}>
       {path}
-      {/* <Typography variant="h4" gutterBottom>
+      <Typography variant="h4" gutterBottom>
         Recent Posts
       </Typography>
       {list.map((post) => (
         <BlogPostItemMobile key={post.title} post={post} onSiderbar path={path} />
-      ))} */}
+      ))}
     </Stack>
   );
 }

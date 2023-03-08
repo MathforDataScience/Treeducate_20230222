@@ -45,9 +45,9 @@ function CategoryItem({ category }) {
     <Stack key={name} direction="row" alignItems="center">
       <Box sx={{ width: 6, height: 6, mr: 2, bgcolor: 'primary.main', borderRadius: '50%' }} />
       <NextLink href={path} passHref>
-        <Link variant="body2" color="inherit">
+        {/* <Link variant="body2" color="inherit">
           {name}
-        </Link>
+        </Link> */}
       </NextLink>
     </Stack>
   );
