@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
 // next
 import NextLink from 'next/link';
+import Image from 'next/image';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Box, Link } from '@mui/material';
@@ -26,20 +27,30 @@ const Logo = forwardRef(({ disabledLink = false, sx, ...other }, ref) => {
   //     sx={{ width: 40, height: 40, cursor: 'pointer', ...sx }}
   //   />
   // );
+  //src="https://picsum.photos/40"
 
+  const imsize = 35;
+  
   const logo = (
     <Box
       ref={ref}
       component="div"
       sx={{
-        width: 40,
-        height: 40,
+        width: {imsize},
+        height: {imsize},
         display: 'inline-flex',
         ...sx,
       }}
       {...other}
     >
-      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 512 512">
+        <Image  
+          src="/images/t_logo1.png"
+          alt="Logo"
+          width={imsize}
+          height={imsize}
+        /> 
+    
+      {/* <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 512 512">
         <defs>
           <linearGradient id="BG1" x1="100%" x2="50%" y1="9.946%" y2="50%">
             <stop offset="0%" stopColor={PRIMARY_DARK} />
@@ -66,12 +77,12 @@ const Logo = forwardRef(({ disabledLink = false, sx, ...other }, ref) => {
             fill="url(#BG2)"
             d="M444.31 229.726c-46.27-80.956-94.1-157.228-149.043-45.344-7.516 14.384-12.995 42.337-25.267 42.337v-.142c-12.272 0-17.75-27.953-25.265-42.337C189.79 72.356 141.96 148.628 95.69 229.584c-3.483 6.106-6.828 11.932-9.69 16.996 106.038-67.127 97.11 135.667 184 137.278V384c86.891-1.611 77.962-204.405 184-137.28-2.86-5.062-6.206-10.888-9.69-16.994"
           />
-          <path
+          {/* <path
             fill="url(#BG3)"
             d="M450 384c26.509 0 48-21.491 48-48s-21.491-48-48-48-48 21.491-48 48 21.491 48 48 48"
-          />
+          /> 
         </g>
-      </svg>
+      </svg> */}
     </Box>
   );
 
