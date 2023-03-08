@@ -57,8 +57,8 @@ export default function BlogPostItemOne({ post, path, onSiderbar }) {
 
   // const { title, duration, coverImg, createdAt } = frontmatter;
 
-  const as = `${path}/dashboard/blog/post/${slug}`;
-  const href = `${path}/dashboard/blog/post/[slug]`;
+  const as = `${path}dashboard/blog/post/${slug}`;
+  const href = `${path}dashboard/blog/post/[slug]`;
 
   return (
     <Stack

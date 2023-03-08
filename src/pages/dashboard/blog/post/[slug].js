@@ -53,13 +53,13 @@ export default function BlogPostPage() {
 
       // const title1 = title.charAt(0).toUpperCase() + title.slice(1)
 
-      console.log("Marker 41")
-      console.log(slug)     
+      // console.log("Marker 41")
+      // console.log(slug)     
 
       const data = await fetchArticle(slug);
 
-      console.log("Marker 42")
-      console.log(data) 
+      // console.log("Marker 42")
+      // console.log(data) 
 
       setPost(data)
       setLoadingPost(false);

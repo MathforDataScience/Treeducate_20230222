@@ -18,12 +18,12 @@ import DashboardLayout from '../layouts/dashboard';
 // components
 import { useSettingsContext } from '../components/settings';
 // sections
-import {
-  AppWidget,
+// import {
+//   AppWidget,
 
-} from '../sections/@dashboard/general/app';
+// } from '../sections/@dashboard/general/app';
 // assets
-import { SeoIllustration } from '../assets/illustrations';
+// import { SeoIllustration } from '../assets/illustrations';
 
 import { supabaseCl } from '../../lib/supabaseClient';
 import { useSupabaseClient, useUser }    from '@supabase/auth-helpers-react';
@@ -34,13 +34,11 @@ import Trending from '../components/Trending';
 import { fetchArticles } from "../utils/fetchArticles";
 
 import { useEffect, useState } from "react";
+
 // import { useRecoilState } from "recoil";
 // import { articlesState } from "../../atoms/articleAtom";
-
 // import { BiTrendingUp } from "react-icons/bi";
 // import { use } from "react"
-
-
 // import { articlesState } from "../../atoms/articleAtom";
 
 // ----------------------------------------------------------------------
@@ -53,7 +51,6 @@ GeneralAppPage.getLayout = (page) => <DashboardLayout>{page}</DashboardLayout>;
 //   const  data = await supabaseCl.from('articles').select();
 //   return { data };
 // }
-
 // async function getData() {
 //   const  data = await supabaseCl.from('articles').select();
 //   return {
@@ -61,9 +58,7 @@ GeneralAppPage.getLayout = (page) => <DashboardLayout>{page}</DashboardLayout>;
 //          countries: data
 //         },
 //       }
-
 // }
-
 // GeneralAppPage.getInitialProps = async (ctx) {
 //     const res = await  supabaseCl.from('articles').select();
 //     const json = await res.json()
@@ -73,7 +68,8 @@ GeneralAppPage.getLayout = (page) => <DashboardLayout>{page}</DashboardLayout>;
 export default function GeneralAppPage() {
   const user = useUser();
 
-  console.log(user)
+  // console.log("Marker 71")
+  // console.log(user)
   // 
 
   const [articles, setArticle ] = useState(null); //useRecoilState(articlesState);
@@ -88,27 +84,19 @@ export default function GeneralAppPage() {
 
 
   // const [loading, setLoading] = useState(false);
-
-
   // const dat = getData();
   // console.log(dat);
-
   // console.log("Marker 2")
   // console.log(user)
-
   // const { user } = useAuthContext();
   // const  user = { displayName : "carl_von@clausewitz.preussen" };
-
   //     useEffect(() => {
-
   //       const getData = async () => {
   //           const res = await supabaseCl.from('articles').select();
-
   //           setArticle(res.data)
   //       };
   //       getData();
   //   }, [])
-
   // console.log("Marker 2")
   // console.log(articles)
 
@@ -136,14 +124,14 @@ export default function GeneralAppPage() {
                 img="/banner.png"
               />
             </div>
-          : <div>Welcome </div>}
-            <div>
+          : <div><h1>Welcome {user.email}</h1> </div>}
+            {/* <div>
                 <ul>
                   {articles?.map((s) => (
                     <li key={s.id}>{s.title} </li>
                   ))} 
                 </ul>
-              </div>
+              </div> */}
             </Grid>
 
           <Grid item xs={12} md={6} lg={4}>
