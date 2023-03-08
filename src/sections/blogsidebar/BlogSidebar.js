@@ -24,8 +24,8 @@ import BlogSidebarRecentPosts from './BlogSidebarRecentPosts';
 export default function BlogSidebar({recentPosts}) {
   // const isDesktop = useResponsive('up', 'md');
 
-  console.log("Marker 22")
-  console.log(recentPosts)
+  // console.log("Marker 22")
+  // console.log(recentPosts)
 
   return (
     <>

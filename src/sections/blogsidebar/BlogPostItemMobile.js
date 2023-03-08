@@ -36,15 +36,12 @@ BlogPostItemMobile.propTypes = {
 };
 
 export default function BlogPostItemMobile({ post, path, onSiderbar }) {
+
   // const { slug, frontmatter } = post;
-
-  console.log("Marker 24")
-  console.log(post)
-
   // const { title, duration, coverImg, createdAt } = frontmatter;
 
-  // const as = `${path}/${slug}`;
-  // const href = `${path}/[slug]`;
+  const as = `${path}/post/${post.slug}`;
+  const href = `${path}/post/[slug]`;
 
   return (
     <Stack
@@ -54,22 +51,22 @@ export default function BlogPostItemMobile({ post, path, onSiderbar }) {
       sx={{ width: 1 }}
     >
       {/* <Image
-        alt={title}
-        src={coverImg}
+        alt="Platzhalter"
+        src="https://picsum.photos/40"
         sx={{
-          width: 80,
-          height: 80,
+          width: 40,
+          height: 40,
           flexShrink: 0,
           borderRadius: 1.5,
         }}
       /> */}
 
       <Stack spacing={onSiderbar ? 0.5 : 1}>
-        {/* <NextLink passHref as={as} href={href}> */}
+        <NextLink passHref as={as} href={href}>
           <TextMaxLine variant={onSiderbar ? 'subtitle2' : 'h6'} asLink>
             {post.title}
           </TextMaxLine>
-        {/* </NextLink> */}
+        </NextLink>
 
         <Stack
           direction="row"
@@ -79,7 +76,7 @@ export default function BlogPostItemMobile({ post, path, onSiderbar }) {
         >
           {fDate(post.inserted_at)}
           <DotStyle />
-          {/* {duration} */} 8 minutes
+          {/* {duration} */}
         </Stack>
       </Stack>
     </Stack>

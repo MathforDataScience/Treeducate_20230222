@@ -15,8 +15,8 @@ BlogSidebarRecentPosts.propTypes = {
 
 export default function BlogSidebarRecentPosts({ recentPosts }) {
   const { list, path } = recentPosts;
-  console.log("Marker 23")
-  console.log(recentPosts)
+  // console.log("Marker 23")
+  // console.log(recentPosts)
 
   return (
     <Stack spacing={3}>
@@ -25,7 +25,7 @@ export default function BlogSidebarRecentPosts({ recentPosts }) {
         Recent Posts
       </Typography>
       {list.map((post) => (
-        <BlogPostItemMobile key={post.title} post={post} onSiderbar path={path} />
+        <BlogPostItemMobile key={post.slug} post={post} onSiderbar path={path} />
       ))}
     </Stack>
   );

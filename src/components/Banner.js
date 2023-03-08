@@ -159,8 +159,8 @@ export default function Banner({ title, description, action, img, ...other }) {
         {/* </Item>
         <Item> */}
             <Image  
-                alt = "Banner1"
-                src="/images/banner.png"
+                alt = "Banner2"
+                src="/images/green_city1.jpg"
                 height = {200}
                 width = {300}                
             />

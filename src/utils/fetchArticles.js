@@ -3,9 +3,10 @@ import { supabaseCl } from "../../lib/supabaseClient";
 
 export const fetchArticles = async () => {
     const { data, error } = await supabaseCl
-        .from("articles")
+        .from("hub_blogposts")
         .select("*")
         .limit(10);
+
     return data;
 }
 
@@ -13,9 +14,9 @@ export const fetchArticle = async (capt) => {
 
 
     const { data, error } = await supabaseCl
-        .from("articles")
+        .from("hub_blogposts")
         .select("*")
-        .eq("title", capt)
+        .eq("slug", capt)
         .single();
     return data;
 }

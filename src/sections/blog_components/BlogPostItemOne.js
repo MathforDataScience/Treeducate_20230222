@@ -50,15 +50,15 @@ BlogPostItemOne.propTypes = {
 
 export default function BlogPostItemOne({ post, path, onSiderbar }) {
   const { slug, title, inserted_at } = post;
-  console.log("Marker 17");
-  console.log(slug);
-  console.log(title);
+  // console.log("Marker 17");
+  // console.log(slug);
+  // console.log(title);
   const duration = "8 minutes read";
 
   // const { title, duration, coverImg, createdAt } = frontmatter;
 
-  const as = `${path}/${slug}`;
-  const href = `${path}/[slug]`;
+  const as = `${path}/dashboard/blog/post/${slug}`;
+  const href = `${path}/dashboard/blog/post/[slug]`;
 
   return (
     <Stack

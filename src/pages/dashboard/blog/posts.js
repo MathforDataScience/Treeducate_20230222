@@ -6,7 +6,7 @@ import NextLink from 'next/link';
 // @mui
 import { Grid, Button, Container, Stack } from '@mui/material';
 // utils
-import axios from '../../../utils/axios';
+// import axios from '../../../utils/axios';
 // routes
 import { PATH_DASHBOARD } from '../../../routes/paths';
 // layouts
@@ -148,7 +148,7 @@ export default function BlogPostsPage() {
                   <BlogSidebar
                   recentPosts={{
                     list: articles.slice(-4),
-                    path: '/dashboard/blog1',
+                    path: '/dashboard/blog',
                   }}
                 />
                 

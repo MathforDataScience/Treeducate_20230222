@@ -37,7 +37,7 @@ export default function BlogPostPage() {
   const { themeStretch } = useSettingsContext();
 
   const {
-    query: { title },
+    query: { slug },
   } = useRouter();
 
   const [recentPosts, setRecentPosts] = useState([]);
@@ -51,20 +51,27 @@ export default function BlogPostPage() {
   const getPost = useCallback(async () => {
     try {
 
-      const title1 = title.charAt(0).toUpperCase() + title.slice(1)
-      const data = await fetchArticle(title1);
+      // const title1 = title.charAt(0).toUpperCase() + title.slice(1)
+
+      console.log("Marker 41")
+      console.log(slug)     
+
+      const data = await fetchArticle(slug);
+
+      console.log("Marker 42")
+      console.log(data) 
 
       setPost(data)
       setLoadingPost(false);
 
     } catch (error) {
 
-      console.log("Marker 28")
-      console.error(error);
+      // console.log("Marker 28")
+      // console.error(error);
       setLoadingPost(false);
       setErrorMsg(error.message);
     }
-  }, [title]);
+  }, [slug]);
 
   // const getRecentPosts = useCallback(async () => {
   //   try {
@@ -83,10 +90,10 @@ export default function BlogPostPage() {
   // }, [getRecentPosts]);
 
   useEffect(() => {
-    if (title) {
+    if (slug) {
       getPost();
     }
-  }, [getPost, title]);
+  }, [getPost, slug]);
 
   return (
     <>

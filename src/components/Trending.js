@@ -53,7 +53,7 @@ const Trending = () => {
         getData();
     }, [])
 
-    console.log(articles);
+    // console.log(articles);
 
     const duration = "8 minutes read"; 
     const onSiderbar = true;

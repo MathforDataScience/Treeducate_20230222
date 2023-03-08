@@ -43,7 +43,7 @@ BlogPostCard.propTypes = {
 export default function BlogPostCard({ post, index }) {
   const isDesktop = useResponsive('up', 'md');
 
-  const { cover, title, view, comment, share, author, createdAt } = post;
+  const { cover, title, slug, view, comment, share, author, createdAt } = post;
 
   const latestPost = index === 0 || index === 1 || index === 2;
 
@@ -63,6 +63,7 @@ export default function BlogPostCard({ post, index }) {
 
         <PostContent
           title={title}
+          slug={slug}        
           view={view}
           comment={comment}
           share={share}
@@ -110,6 +111,7 @@ export default function BlogPostCard({ post, index }) {
       
       <PostContent
         title={title}
+        slug={slug}       
         view={view}
         comment={comment}
         share={share}
@@ -130,10 +132,10 @@ PostContent.propTypes = {
   createdAt: PropTypes.string,
 };
 
-export function PostContent({ title, view, comment, share, createdAt, index }) {
+export function PostContent({ title, slug, view, comment, share, createdAt, index }) {
   const isDesktop = useResponsive('up', 'md');
 
-  const linkTo = PATH_DASHBOARD.blog.view(paramCase(title));
+  const linkTo = PATH_DASHBOARD.blog.view(paramCase(slug));
 
   const latestPostLarge = index === 0;
 
