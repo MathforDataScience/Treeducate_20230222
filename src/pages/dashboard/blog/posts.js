@@ -19,6 +19,14 @@ import CustomBreadcrumbs from '../../../components/custom-breadcrumbs';
 // sections
 import { BlogPostCard, BlogPostsSort, BlogPostsSearch } from '../../../sections/@dashboard/blog';
 
+// import { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
+import { articlesState } from "../../../../atoms/articleAtom";
+import { fetchArticles } from "../../../utils/fetchArticles";
+
+import  BlogSidebar                 from '../../../sections/blogsidebar/BlogSidebar';
+
+
 // ----------------------------------------------------------------------
 
 const SORT_OPTIONS = [
@@ -36,28 +44,46 @@ BlogPostsPage.getLayout = (page) => <DashboardLayout>{page}</DashboardLayout>;
 export default function BlogPostsPage() {
   const { themeStretch } = useSettingsContext();
 
-  const [posts, setPosts] = useState([]);
+  // const [posts, setPosts] = useState([]);
+
+
+
+  // const getAllPosts = useCallback(async () => {
+  //   try {
+  //     const response = await axios.get('/api/blog/posts');
+  //     setPosts(response.data.posts);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }, []);
+
+  // useEffect(() => {
+  //   getAllPosts();
+  // }, [getAllPosts]);
+
+
+  // const [articles, setArticle ] = useRecoilState(articlesState);
+  const [articles, setArticle ] = useState([]);
+  useEffect(() => {
+
+      const getData = async () => {
+          const data = await fetchArticles();
+          setArticle(data)
+      };
+      getData();
+  }, [])
 
   const [sortBy, setSortBy] = useState('latest');
 
-  const sortedPosts = applySortBy(posts, sortBy);
-
-  const getAllPosts = useCallback(async () => {
-    try {
-      const response = await axios.get('/api/blog/posts');
-      setPosts(response.data.posts);
-    } catch (error) {
-      console.error(error);
-    }
-  }, []);
-
-  useEffect(() => {
-    getAllPosts();
-  }, [getAllPosts]);
+  const sortedPosts = applySortBy(articles, sortBy);
 
   const handleChangeSortBy = (event) => {
     setSortBy(event.target.value);
   };
+
+  console.log("Marker 21")
+  console.log(articles)
+  console.log(articles.length)
 
   return (
     <>
@@ -65,7 +91,10 @@ export default function BlogPostsPage() {
         <title> Blog: Posts | Minimal UI</title>
       </Head>
 
-      <Container maxWidth={themeStretch ? false : 'lg'}>
+      <Container maxWidth={themeStretch ? false : 'lg'}
+                sx={{
+                  mt: { xs: 4, md: 10 },
+                }}>
         <CustomBreadcrumbs
           heading="Blog"
           links={[
@@ -93,22 +122,36 @@ export default function BlogPostsPage() {
           }
         />
 
-        <Stack mb={5} direction="row" alignItems="center" justifyContent="space-between">
-          <BlogPostsSearch />
-          <BlogPostsSort sortBy={sortBy} sortOptions={SORT_OPTIONS} onSort={handleChangeSortBy} />
-        </Stack>
+        <Grid container spacing={{ md: 8 }}>
+          <Grid item xs={12} md={8}>
 
-        <Grid container spacing={3}>
-          {(!posts.length ? [...Array(12)] : sortedPosts).map((post, index) =>
-            post ? (
-              <Grid key={post.id} item xs={12} sm={6} md={(index === 0 && 6) || 3}>
-                <BlogPostCard post={post} index={index} />
-              </Grid>
-            ) : (
-              <SkeletonPostItem key={index} />
-            )
-          )}
-        </Grid>
+            <Stack mb={5} direction="row" alignItems="center" justifyContent="space-between">
+              <BlogPostsSearch />
+              <BlogPostsSort sortBy={sortBy} sortOptions={SORT_OPTIONS} onSort={handleChangeSortBy} />
+            </Stack>
+            <Grid container spacing={3}>
+              {(!articles.length ? [...Array(12)] : sortedPosts).map((s, index) =>
+                s ? (
+                  <Grid key={s.id} item xs={12} sm={6} md={(index === 0 && 6) || 6}>
+                    
+                    <BlogPostCard post={s} index={index} /> 
+                  </Grid>
+                ) : (
+                  <SkeletonPostItem key={index} />
+                )
+              )} 
+            </Grid>
+          </Grid>
+          <Grid item xs={12} md={4}>
+
+            <BlogSidebar
+              recentPosts={{
+                list: articles.slice(-4),
+                path: '/dashboard/blog',
+              }}
+            />
+          </Grid>
+        </Grid>   
       </Container>
     </>
   );
@@ -130,3 +173,11 @@ const applySortBy = (posts, sortBy) => {
   }
   return posts;
 };
+
+
+
+
+// recentPosts={{
+//   list: articles.slice(-4),
+//   path: '/dashboard/blog',
+// }}

@@ -18,6 +18,10 @@ import Iconify from '../../../components/iconify';
 import TextMaxLine from '../../../components/text-max-line';
 import SvgColor from '../../../components/svg-color';
 
+// alt={author.name}
+// src={author.avatarUrl}
+//<Image alt="cover" src={cover} ratio="4/3" />
+
 // ----------------------------------------------------------------------
 
 const StyledOverlay = styled('div')(({ theme }) => ({
@@ -47,8 +51,8 @@ export default function BlogPostCard({ post, index }) {
     return (
       <Card>
         <Avatar
-          alt={author.name}
-          src={author.avatarUrl}
+          alt="Schax Schustermann"
+          src="https://i.pravatar.cc/60"
           sx={{
             top: 24,
             left: 24,
@@ -68,7 +72,7 @@ export default function BlogPostCard({ post, index }) {
 
         <StyledOverlay />
 
-        <Image alt="cover" src={cover} sx={{ height: 360 }} />
+        <Image alt="cover" src="https://picsum.photos/200" sx={{ height: 360 }} />
       </Card>
     );
   }
@@ -89,8 +93,8 @@ export default function BlogPostCard({ post, index }) {
         />
 
         <Avatar
-          alt={author.name}
-          src={author.avatarUrl}
+          alt="Schax Schustermann"
+          src="https://i.pravatar.cc/60"
           sx={{
             left: 24,
             zIndex: 9,
@@ -101,9 +105,9 @@ export default function BlogPostCard({ post, index }) {
           }}
         />
 
-        <Image alt="cover" src={cover} ratio="4/3" />
+        <Image alt="cover" src="https://picsum.photos/200" ratio="4/3" />
       </Box>
-
+      
       <PostContent
         title={title}
         view={view}
