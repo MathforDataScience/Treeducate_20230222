@@ -49,7 +49,7 @@ BlogPostItemOne.propTypes = {
 };
 
 export default function BlogPostItemOne({ post, path, onSiderbar }) {
-  const { slug, title, inserted_at } = post;
+  const { slug, title, created_at } = post;
   // console.log("Marker 17");
   // console.log(slug);
   // console.log(title);
@@ -91,7 +91,7 @@ export default function BlogPostItemOne({ post, path, onSiderbar }) {
           alignItems="center"
           sx={{ typography: 'caption', color: 'text.disabled' }}
         >
-          {fDate(inserted_at)}
+          {fDate(created_at)}
           <DotStyle />
           {duration}
         </Stack>

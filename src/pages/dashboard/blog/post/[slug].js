@@ -4,6 +4,10 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 // @mui
 import { Box, Divider, Stack, Container, Typography, Pagination } from '@mui/material';
+// @mui - zone
+import { Grid } from '@mui/material';
+import { styled } from '@mui/material/styles';
+
 // routes
 import { PATH_DASHBOARD } from '../../../../routes/paths';
 // utils
@@ -27,6 +31,16 @@ import {
 import { fetchArticle } from "../../../../utils/fetchArticles";
 import { gridColumnLookupSelector } from '@mui/x-data-grid';
 
+import { fDate }      from '../../../../utils/formatTime';
+
+const DotStyle = styled('span')(({ theme }) => ({
+  width: 4,
+  height: 4,
+  borderRadius: '50%',
+  backgroundColor: 'currentColor',
+  margin: theme.spacing(0, 1),
+}));
+
 // ----------------------------------------------------------------------
 
 BlogPostPage.getLayout = (page) => <DashboardLayout>{page}</DashboardLayout>;
@@ -35,6 +49,8 @@ BlogPostPage.getLayout = (page) => <DashboardLayout>{page}</DashboardLayout>;
 
 export default function BlogPostPage() {
   const { themeStretch } = useSettingsContext();
+
+  const duration = "7 minutes read";
 
   const {
     query: { slug },
@@ -58,8 +74,7 @@ export default function BlogPostPage() {
 
       const data = await fetchArticle(slug);
 
-      // console.log("Marker 42")
-      // console.log(data) 
+ 
 
       setPost(data)
       setLoadingPost(false);
@@ -95,6 +110,10 @@ export default function BlogPostPage() {
     }
   }, [getPost, slug]);
 
+
+  console.log("Marker 42")
+  console.log(post) 
+
   return (
     <>
       <Head>
@@ -119,7 +138,94 @@ export default function BlogPostPage() {
           ]}
         />
 
-        {post && (
+
+      <Divider />
+      {!post ? <h5>Loading ...</h5> : 
+      <Container>
+        <Grid container spacing={3} justifyContent={{ md: 'center' }}>
+          <Grid item xs={12} md={8}>
+            <Typography
+              variant="h2"
+              component="h1"
+              sx={{
+                pb: 6,
+                pt: { xs: 6, md: 10 },
+              }}
+            >
+                          <BlogPostHero post={post} />
+             {/* {post.title}   */}
+            </Typography>
+
+            <Stack direction="row" justifyContent="space-between" spacing={1.5}>
+              {/* <Avatar src={author.picture} sx={{ width: 48, height: 48 }} /> */}
+              <Stack spacing={0.5} flexGrow={1}>
+                {/* <Typography variant="subtitle2">{author.name}</Typography> */}
+                <Stack
+                  direction="row"
+                  alignItems="center"
+                  sx={{ typography: 'caption', color: 'text.disabled' }}
+                >
+                {fDate(post.inserted_at)}
+                <DotStyle />
+                {duration}
+                </Stack>
+              </Stack>
+
+              {/* <Stack direction="row" alignItems="center">
+                <ShareButton />
+                <FavoriteButton checked={favorite} onChange={handleChangeFavorite} />
+              </Stack> */}
+            </Stack>
+
+            <Divider sx={{ my: 6 }} />
+
+            <Typography variant="h5" sx={{ mb: 5 }}><h6>...Description</h6>
+              {/* {description} */}
+            </Typography>
+            
+            {/* <Markdown content={post.excerpt} firstLetter /> */}
+            <Markdown
+              children={post.content}
+              sx={{
+                px: { md: 5 },
+              }}
+            />
+
+            <Stack direction="row" alignItems="center" flexWrap="wrap" sx={{ my: 6 }}>
+              <Typography variant="subtitle2" sx={{ mr: 1 }}>
+                Tags:
+              </Typography>
+              {/* {tags.map((tag) => (
+                <Chip key={tag} size="small" label={tag} sx={{ m: 0.5 }} onClick={() => {}} />
+              ))} */}
+            </Stack>
+
+            <Stack direction="row" alignItems="center" flexWrap="wrap">
+              <Typography variant="subtitle2" sx={{ mr: 1 }}>
+                Share:
+              </Typography>
+              {/* <SocialsButton initialColor links={shareLinks} simple={false} /> */}
+            </Stack>
+
+            <Divider sx={{ mt: 8 }} />
+
+            {/* <BlogAuthorInfo author={author} /> */}
+          </Grid>
+        </Grid>
+      </Container>
+      }
+
+      <Divider />
+
+
+
+
+
+
+
+
+
+        {/* {post && (
           <Stack
             sx={{
               borderRadius: 2,
@@ -155,7 +261,6 @@ export default function BlogPostPage() {
               }}
             >
               <Divider />
-              {/* <BlogPostTags post={post} /> */}
               <Divider />
             </Stack>
 
@@ -168,7 +273,7 @@ export default function BlogPostPage() {
                 <Typography variant="h4">Comments</Typography>
 
                 <Typography variant="subtitle2" sx={{ color: 'text.disabled' }}>
-                  {/* ({post.comments.length}) */}
+                
                 </Typography>
               </Stack>
 
@@ -182,7 +287,7 @@ export default function BlogPostPage() {
                 px: { md: 5 },
               }}
             >
-              {/* <BlogPostCommentList comments={post.comments} /> */}
+
 
               <Pagination
                 count={8}
@@ -194,13 +299,14 @@ export default function BlogPostPage() {
               />
             </Stack>
           </Stack>
-        )}
+        )} 
+      */}
 
         {errorMsg && !loadingPost && <Typography variant="h6">404 {errorMsg}</Typography>}
 
         {loadingPost && <SkeletonPostDetails />}
 
-        {!!recentPosts.length && (
+        {/* {!!recentPosts.length && (
           <>
             <Typography variant="h4" sx={{ my: 5 }}>
               Recent posts
@@ -220,8 +326,14 @@ export default function BlogPostPage() {
               ))}
             </Box>
           </>
-        )}
+        )} */}
       </Container>
     </>
   );
 }
+
+
+
+             // ({post.comments.length}) */}
+             // <BlogPostCommentList comments={post.comments} /> */}
+             // <BlogPostTags post={post} /> */}
