@@ -18,11 +18,14 @@ import { SkeletonPostDetails } from '../../../../components/skeleton';
 // sections
 import {
   BlogPostHero,
-  BlogPostTags,
+  // BlogPostTags,
   BlogPostCard,
   BlogPostCommentList,
   BlogPostCommentForm,
 } from '../../../../sections/@dashboard/blog';
+
+import { fetchArticle } from "../../../../utils/fetchArticles";
+import { gridColumnLookupSelector } from '@mui/x-data-grid';
 
 // ----------------------------------------------------------------------
 
@@ -47,34 +50,37 @@ export default function BlogPostPage() {
 
   const getPost = useCallback(async () => {
     try {
-      const response = await axios.get('/api/blog/post', {
-        params: { title },
-      });
 
-      setPost(response.data.post);
+      const title1 = title.charAt(0).toUpperCase() + title.slice(1)
+      const data = await fetchArticle(title1);
+
+      setPost(data)
       setLoadingPost(false);
+
     } catch (error) {
+
+      console.log("Marker 28")
       console.error(error);
       setLoadingPost(false);
       setErrorMsg(error.message);
     }
   }, [title]);
 
-  const getRecentPosts = useCallback(async () => {
-    try {
-      const response = await axios.get('/api/blog/posts/recent', {
-        params: { title },
-      });
+  // const getRecentPosts = useCallback(async () => {
+  //   try {
+  //     const response = await axios.get('/api/blog/posts/recent', {
+  //       params: { title },
+  //     });
 
-      setRecentPosts(response.data.recentPosts);
-    } catch (error) {
-      console.error(error);
-    }
-  }, [title]);
+  //     setRecentPosts(response.data.recentPosts);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }, [title]);
 
-  useEffect(() => {
-    getRecentPosts();
-  }, [getRecentPosts]);
+  // useEffect(() => {
+  //   getRecentPosts();
+  // }, [getRecentPosts]);
 
   useEffect(() => {
     if (title) {
@@ -128,7 +134,7 @@ export default function BlogPostPage() {
             </Typography>
 
             <Markdown
-              children={post.body}
+              children={post.content}
               sx={{
                 px: { md: 5 },
               }}
@@ -142,7 +148,7 @@ export default function BlogPostPage() {
               }}
             >
               <Divider />
-              <BlogPostTags post={post} />
+              {/* <BlogPostTags post={post} /> */}
               <Divider />
             </Stack>
 
@@ -155,7 +161,7 @@ export default function BlogPostPage() {
                 <Typography variant="h4">Comments</Typography>
 
                 <Typography variant="subtitle2" sx={{ color: 'text.disabled' }}>
-                  ({post.comments.length})
+                  {/* ({post.comments.length}) */}
                 </Typography>
               </Stack>
 
@@ -169,7 +175,7 @@ export default function BlogPostPage() {
                 px: { md: 5 },
               }}
             >
-              <BlogPostCommentList comments={post.comments} />
+              {/* <BlogPostCommentList comments={post.comments} /> */}
 
               <Pagination
                 count={8}

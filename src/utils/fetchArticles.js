@@ -9,11 +9,13 @@ export const fetchArticles = async () => {
     return data;
 }
 
-export const fetchArticle = async (id) => {
+export const fetchArticle = async (capt) => {
+
+
     const { data, error } = await supabaseCl
         .from("articles")
         .select("*")
-        .eq("id", id)
+        .eq("title", capt)
         .single();
     return data;
 }

@@ -81,9 +81,9 @@ export default function BlogPostsPage() {
     setSortBy(event.target.value);
   };
 
-  console.log("Marker 21")
-  console.log(articles)
-  console.log(articles.length)
+  // console.log("Marker 21")
+  // console.log(articles)
+  // console.log(articles.length)
 
   return (
     <>

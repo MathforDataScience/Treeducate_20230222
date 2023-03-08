@@ -118,7 +118,7 @@ export default function GeneralAppPage() {
     <>
 
       <Head>
-        <title>Let's democratize knowlegde</title>
+        <title>Let's democratize knowledge</title>
       </Head>
 
       <Container maxWidth={themeStretch ? false : 'xl'}>
