@@ -1,5 +1,5 @@
 import * as Yup from 'yup';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 // next
 import { useRouter } from 'next/router';
 // form
@@ -24,6 +24,8 @@ import BlogNewPostPreview from './BlogNewPostPreview';
 
 import { useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
 
+import slugify from 'react-slugify';
+
 // ----------------------------------------------------------------------
 
 const TAGS_OPTION = [
@@ -47,6 +49,22 @@ export default function BlogNewPostForm() {
   const [show, setShow] = useState(false);
   const user = useUser();
 
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (!user) {
+     router.replace("/");
+    } else {
+     setIsLoading(false)
+    }
+  }, []);
+
+  // Überarbeiten zu Standard-Loading-Block für überall!!
+
+  // if (!user) {
+  //   router.replace("/");
+  //   return null;
+  // }
   // console.log("marker 61")
   // console.log(user)
 
@@ -57,7 +75,7 @@ export default function BlogNewPostForm() {
 
   const [articleData , setArticleData] = useState(initialArticleState);
 
-
+  // -----------------------------------------------------------------------------------------
 
 
 
@@ -110,9 +128,25 @@ export default function BlogNewPostForm() {
     setOpenPreview(false);
   };
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data_inp) => {
+    // console.log("Marker 82")
+    // console.log(data_inp)
     try {
       await new Promise((resolve) => setTimeout(resolve, 500));
+
+      const { data, error } = await supaBaseClient
+      .from("hub_blogposts")
+      .insert([
+          {
+            user_profile_id: user?.id,
+            title: data_inp.title,
+            slug: slugify(data_inp.title) + "-" + user?.id.substring(0,13),
+            content: data_inp.content,
+          },
+      ])
+      .single();
+
+
       reset();
       handleClosePreview();
       enqueueSnackbar('Post success!');
@@ -142,18 +176,19 @@ export default function BlogNewPostForm() {
     setValue('cover', null);
   };
 
-  if (!user) {
-    router.replace("/");
-    return null;
-  }
+
 
 
   return (
-    <>
-      {user.id} <br/>
-      {user.email} 
+    // <>
+    //   {user.id} <br/>
+    //   {user.email} 
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
         <Grid container spacing={3}>
+          <div>User Data<br/>
+            {user?.id} <br/>
+            {user?.email} 
+          </div>
           <Grid item xs={12} md={8}>
             <Card sx={{ p: 3 }}>
               <Stack spacing={3}>
@@ -268,6 +303,6 @@ export default function BlogNewPostForm() {
         />
       </FormProvider>
 
-    </>
+    // </>
   );
 }

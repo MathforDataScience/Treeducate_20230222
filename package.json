@@ -58,6 +58,7 @@
     "react-quill": "^2.0.0",
     "react-simple-typewriter": "^5.0.1",
     "react-slick": "^0.29.0",
+    "react-slugify": "^3.0.2",
     "react-timeago": "^7.1.0",
     "recoil": "^0.7.6",
     "rehype-highlight": "^6.0.0",

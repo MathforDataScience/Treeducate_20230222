@@ -5,7 +5,7 @@ export const fetchArticles = async () => {
     const { data, error } = await supabaseCl
         .from("hub_blogposts")
         .select("*")
-        .limit(10);
+        .limit(18);
 
     return data;
 }
