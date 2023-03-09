@@ -22,28 +22,44 @@ import FormProvider, {
 //
 import BlogNewPostPreview from './BlogNewPostPreview';
 
+import { useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
+
 // ----------------------------------------------------------------------
 
 const TAGS_OPTION = [
-  'Toy Story 3',
-  'Logan',
-  'Full Metal Jacket',
-  'Dangal',
-  'The Sting',
-  '2001: A Space Odyssey',
-  "Singin' in the Rain",
-  'Toy Story',
-  'Bicycle Thieves',
-  'The Kid',
-  'Inglourious Basterds',
-  'Snatch',
-  '3 Idiots',
+  'Science',
+  'Technology',
+  'Enterpreneurship',
+  'E-Learning',
+  'Arts',
+  'Sports',
+  'Heal the world'
 ];
 
 // ----------------------------------------------------------------------
 
 export default function BlogNewPostForm() {
-  const { push } = useRouter();
+  //const { push } = useRouter();
+
+  const router = useRouter();
+  
+  const supaBaseClient = useSupabaseClient();
+  const [show, setShow] = useState(false);
+  const user = useUser();
+
+  // console.log("marker 61")
+  // console.log(user)
+
+  const initialArticleState = {
+    title: "",
+    content: "",
+  };
+
+  const [articleData , setArticleData] = useState(initialArticleState);
+
+
+
+
 
   const { enqueueSnackbar } = useSnackbar();
 
@@ -63,7 +79,7 @@ export default function BlogNewPostForm() {
     description: '',
     content: '',
     cover: null,
-    tags: ['The Kid'],
+    tags: ['Science'],
     publish: true,
     comments: true,
     metaTitle: '',
@@ -100,7 +116,7 @@ export default function BlogNewPostForm() {
       reset();
       handleClosePreview();
       enqueueSnackbar('Post success!');
-      push(PATH_DASHBOARD.blog.posts);
+      router.push(PATH_DASHBOARD.blog.posts);
       console.log('DATA', data);
     } catch (error) {
       console.error(error);
@@ -126,121 +142,132 @@ export default function BlogNewPostForm() {
     setValue('cover', null);
   };
 
+  if (!user) {
+    router.replace("/");
+    return null;
+  }
+
+
   return (
-    <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-      <Grid container spacing={3}>
-        <Grid item xs={12} md={8}>
-          <Card sx={{ p: 3 }}>
-            <Stack spacing={3}>
-              <RHFTextField name="title" label="Post Title" />
+    <>
+      {user.id} <br/>
+      {user.email} 
+      <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
+        <Grid container spacing={3}>
+          <Grid item xs={12} md={8}>
+            <Card sx={{ p: 3 }}>
+              <Stack spacing={3}>
+                <RHFTextField name="title" label="Post Title" />
 
-              <RHFTextField name="description" label="Description" multiline rows={3} />
+                <RHFTextField name="description" label="Description" multiline rows={3} />
 
-              <Stack spacing={1}>
-                <Typography variant="subtitle2" sx={{ color: 'text.secondary' }}>
-                  Content
-                </Typography>
+                <Stack spacing={1}>
+                  <Typography variant="subtitle2" sx={{ color: 'text.secondary' }}>
+                    Content
+                  </Typography>
 
-                <RHFEditor simple name="content" />
+                  <RHFEditor simple name="content" />
+                </Stack>
+
+                <Stack spacing={1}>
+                  <Typography variant="subtitle2" sx={{ color: 'text.secondary' }}>
+                    Cover
+                  </Typography>
+
+                  <RHFUpload
+                    name="cover"
+                    maxSize={3145728}
+                    onDrop={handleDrop}
+                    onDelete={handleRemoveFile}
+                  />
+                </Stack>
               </Stack>
+            </Card>
+          </Grid>
 
-              <Stack spacing={1}>
-                <Typography variant="subtitle2" sx={{ color: 'text.secondary' }}>
-                  Cover
-                </Typography>
+          <Grid item xs={12} md={4}>
+            <Card sx={{ p: 3 }}>
+              <Stack spacing={3}>
+                <div>
+                  <RHFSwitch
+                    name="publish"
+                    label="Publish"
+                    labelPlacement="start"
+                    sx={{ mb: 1, mx: 0, width: 1, justifyContent: 'space-between' }}
+                  />
 
-                <RHFUpload
-                  name="cover"
-                  maxSize={3145728}
-                  onDrop={handleDrop}
-                  onDelete={handleRemoveFile}
+                  <RHFSwitch
+                    name="comments"
+                    label="Enable comments"
+                    labelPlacement="start"
+                    sx={{ mx: 0, width: 1, justifyContent: 'space-between' }}
+                  />
+                </div>
+
+                <RHFAutocomplete
+                  name="tags"
+                  label="Tags"
+                  multiple
+                  freeSolo
+                  options={TAGS_OPTION.map((option) => option)}
+                  ChipProps={{ size: 'small' }}
+                />
+
+                <RHFTextField name="metaTitle" label="Meta title" />
+
+                <RHFTextField
+                  name="metaDescription"
+                  label="Meta description"
+                  fullWidth
+                  multiline
+                  rows={3}
+                />
+
+                <RHFAutocomplete
+                  name="metaKeywords"
+                  label="Meta keywords"
+                  multiple
+                  freeSolo
+                  options={TAGS_OPTION.map((option) => option)}
+                  ChipProps={{ size: 'small' }}
                 />
               </Stack>
-            </Stack>
-          </Card>
-        </Grid>
+            </Card>
 
-        <Grid item xs={12} md={4}>
-          <Card sx={{ p: 3 }}>
-            <Stack spacing={3}>
-              <div>
-                <RHFSwitch
-                  name="publish"
-                  label="Publish"
-                  labelPlacement="start"
-                  sx={{ mb: 1, mx: 0, width: 1, justifyContent: 'space-between' }}
-                />
-
-                <RHFSwitch
-                  name="comments"
-                  label="Enable comments"
-                  labelPlacement="start"
-                  sx={{ mx: 0, width: 1, justifyContent: 'space-between' }}
-                />
-              </div>
-
-              <RHFAutocomplete
-                name="tags"
-                label="Tags"
-                multiple
-                freeSolo
-                options={TAGS_OPTION.map((option) => option)}
-                ChipProps={{ size: 'small' }}
-              />
-
-              <RHFTextField name="metaTitle" label="Meta title" />
-
-              <RHFTextField
-                name="metaDescription"
-                label="Meta description"
+            <Stack direction="row" spacing={1.5} sx={{ mt: 3 }}>
+              <Button
                 fullWidth
-                multiline
-                rows={3}
-              />
+                color="inherit"
+                variant="outlined"
+                size="large"
+                onClick={handleOpenPreview}
+              >
+                Preview
+              </Button>
 
-              <RHFAutocomplete
-                name="metaKeywords"
-                label="Meta keywords"
-                multiple
-                freeSolo
-                options={TAGS_OPTION.map((option) => option)}
-                ChipProps={{ size: 'small' }}
-              />
+              <LoadingButton
+                fullWidth
+                type="submit"
+                variant="contained"
+                size="large"
+                loading={isSubmitting}
+              >
+                Post
+              </LoadingButton>
             </Stack>
-          </Card>
-
-          <Stack direction="row" spacing={1.5} sx={{ mt: 3 }}>
-            <Button
-              fullWidth
-              color="inherit"
-              variant="outlined"
-              size="large"
-              onClick={handleOpenPreview}
-            >
-              Preview
-            </Button>
-
-            <LoadingButton
-              fullWidth
-              type="submit"
-              variant="contained"
-              size="large"
-              loading={isSubmitting}
-            >
-              Post
-            </LoadingButton>
-          </Stack>
+          </Grid>
         </Grid>
-      </Grid>
 
-      <BlogNewPostPreview
-        values={values}
-        open={openPreview}
-        isValid={isValid}
-        isSubmitting={isSubmitting}
-        onClose={handleClosePreview}
-        onSubmit={handleSubmit(onSubmit)}
-      />
-    </FormProvider>
+        <BlogNewPostPreview
+          values={values}
+          open={openPreview}
+          isValid={isValid}
+          isSubmitting={isSubmitting}
+          onClose={handleClosePreview}
+          onSubmit={handleSubmit(onSubmit)}
+        />
+      </FormProvider>
+
+    </>
   );
 }
