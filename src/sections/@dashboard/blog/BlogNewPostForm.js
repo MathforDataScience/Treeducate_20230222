@@ -44,11 +44,8 @@ export default function BlogNewPostForm() {
   //const { push } = useRouter();
 
   const router = useRouter();
-  
   const supaBaseClient = useSupabaseClient();
-  const [show, setShow] = useState(false);
   const user = useUser();
-
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -67,6 +64,9 @@ export default function BlogNewPostForm() {
   // }
   // console.log("marker 61")
   // console.log(user)
+
+  const [show, setShow] = useState(false);
+
 
   const initialArticleState = {
     title: "",

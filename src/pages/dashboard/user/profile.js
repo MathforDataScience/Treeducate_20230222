@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 // next
 import Head from 'next/head';
+import { useRouter } from 'next/router';
+
 // @mui
 import { Tab, Card, Tabs, Container, Box } from '@mui/material';
 // routes
@@ -30,6 +32,8 @@ import {
   ProfileFollowers,
 } from '../../../sections/@dashboard/user/profile';
 
+import { useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
+
 // ----------------------------------------------------------------------
 
 UserProfilePage.getLayout = (page) => <DashboardLayout>{page}</DashboardLayout>;
@@ -39,52 +43,68 @@ UserProfilePage.getLayout = (page) => <DashboardLayout>{page}</DashboardLayout>;
 export default function UserProfilePage() {
   const { themeStretch } = useSettingsContext();
 
+  const router = useRouter();
+  const supaBaseClient = useSupabaseClient();
+  const user = useUser();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (!user) {
+     router.replace("/");
+    } else {
+     setIsLoading(false)
+    }
+  }, []);
+
+// --------------------------------------------------
+
+
   // const { user } = useAuthContext();
-  const  user = { displayName : "carl_von@clausewitz.preussen872" };
+  // const  user = { displayName : "carl_von@clausewitz.preussen872" };
 
   const [searchFriends, setSearchFriends] = useState('');
 
   const [currentTab, setCurrentTab] = useState('profile');
 
 
-  // const TABS = [
-  //   {
-  //     value: 'profile',
-  //     label: 'Profile',
-  //     icon: <Iconify icon="ic:round-account-box" />,
-  //     component: <Profile info={_userAbout} posts={_userFeeds} />,
-  //   },
-  //   {
-  //     value: 'followers',
-  //     label: 'Followers',
-  //     icon: <Iconify icon="eva:heart-fill" />,
-  //     component: <ProfileFollowers followers={_userFollowers} />,
-  //   },
-  //   {
-  //     value: 'friends',
-  //     label: 'Friends',
-  //     icon: <Iconify icon="eva:people-fill" />,
-  //     component: (
-  //       <ProfileFriends
-  //         friends={_userFriends}
-  //         searchFriends={searchFriends}
-  //         onSearchFriends={(event) => setSearchFriends(event.target.value)}
-  //       />
-  //     ),
-  //   },
-  //   {
-  //     value: 'gallery',
-  //     label: 'Gallery',
-  //     icon: <Iconify icon="ic:round-perm-media" />,
-  //     component: <ProfileGallery gallery={_userGallery} />,
-  //   },
-  // ];
+  const TABS = [
+    {
+      value: 'profile',
+      label: 'Profile',
+      icon: <Iconify icon="ic:round-account-box" />,
+      // component: <Profile info={_userAbout} posts={_userFeeds} />,
+    },
+    {
+      value: 'followers',
+      label: 'Followers',
+      icon: <Iconify icon="eva:heart-fill" />,
+      // component: <ProfileFollowers followers={_userFollowers} />,
+    },
+    {
+      value: 'friends',
+      label: 'Friends',
+      icon: <Iconify icon="eva:people-fill" />,
+      // component: (
+      //   <ProfileFriends
+      //     friends={_userFriends}
+      //     searchFriends={searchFriends}
+      //     onSearchFriends={(event) => setSearchFriends(event.target.value)}
+      //   />
+      // ),
+    },
+    {
+      value: 'gallery',
+      label: 'Gallery',
+      icon: <Iconify icon="ic:round-perm-media" />,
+      // component: <ProfileGallery gallery={_userGallery} />,
+    },
+  ];
 
 
   return (
     <>
       <Head>
-        <title> User: Profile | Minimal UI</title>
+        <title> User: Profile </title>
       </Head>
 
       <Container maxWidth={themeStretch ? false : 'lg'}>
@@ -93,19 +113,19 @@ export default function UserProfilePage() {
           links={[
             { name: 'Dashboard', href: PATH_DASHBOARD.root },
             { name: 'User', href: PATH_DASHBOARD.user.root },
-            { name: user?.displayName },
+            { name: user?.email },
           ]}
         />
-        {/* <Card
+        <Card
           sx={{
             mb: 3,
             height: 280,
             position: 'relative',
           }}
-        > */}
+        >
           {/* <ProfileCover name={user?.displayName} role={_userAbout.role} cover={_userAbout.cover} /> */}
 
-          {/* <Tabs
+          <Tabs
             value={currentTab}
             onChange={(event, newValue) => setCurrentTab(newValue)}
             sx={{
@@ -129,7 +149,7 @@ export default function UserProfilePage() {
           </Tabs>
         </Card>
 
-        {TABS.map(
+       {/*  {TABS.map(
           (tab) => tab.value === currentTab && <Box key={tab.value}> {tab.component} </Box>
         )} */}
       </Container>
