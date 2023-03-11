@@ -93,7 +93,7 @@ export default function Header({ onOpenNav }) {
             Login
           </Button>
           <Button onClick={() => router.push("/auth/register")} >
-            Register
+            Join
           </Button>
         </ButtonGroup> 
 

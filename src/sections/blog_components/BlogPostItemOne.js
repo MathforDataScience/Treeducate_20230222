@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 // next
-import NextLink from 'next/link';
+import NextLink from 'next/link'
+import { Link as MuiLink } from "@mui/material";
 // @mui
 import { styled } from '@mui/material/styles';
 import { Stack } from '@mui/material';
@@ -57,7 +58,7 @@ export default function BlogPostItemOne({ post, path, onSiderbar }) {
 
   // const { title, duration, coverImg, createdAt } = frontmatter;
 
-  const as = `${path}dashboard/blog/post/${slug}`;
+  const replace = `${path}dashboard/blog/post/${slug}`;
   const href = `${path}dashboard/blog/post/[slug]`;
 
   return (
@@ -79,11 +80,23 @@ export default function BlogPostItemOne({ post, path, onSiderbar }) {
       />
 
       <Stack spacing={onSiderbar ? 0.5 : 1}>
-        <NextLink passHref as={as} href={href}>
+
+        <MuiLink 
+          component={NextLink} 
+          prefetch={false} 
+          // sx={{ color: "warning.main" }}
+          href={replace}
+        >
           <TextMaxLine variant={onSiderbar ? 'subtitle2' : 'h6'} asLink>
             {title}
           </TextMaxLine>
-        </NextLink>
+        </MuiLink>
+
+        {/* <NextLink passHref as={as} href={href}>
+          <TextMaxLine variant={onSiderbar ? 'subtitle2' : 'h6'} asLink>
+            {title}
+          </TextMaxLine>
+        </NextLink> */}
 
         <Stack
           direction="row"

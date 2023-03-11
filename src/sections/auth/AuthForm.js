@@ -58,27 +58,27 @@ export default function AuthForm({log_or_reg}) {
                 localization={{
                    variables: {
                         sign_up : {
-                            email_label: "Enter Email-Address2",
-                            password_label: "Enter Password2",
-                            button_label: "Sign up2",
-                            email_input_placeholder: "Email-Address2",
-                            password_input_placeholder: "Password2",
-                            link_text: "New user? Create an account2",
+                            email_label: "Enter your Email-Address",
+                            password_label: "Enter your Password",
+                            button_label: "Create an account",
+                            email_input_placeholder: "Email-Address",
+                            password_input_placeholder: "Password",
+                            link_text: "New user? Create an account",
                         },
                         sign_in : {
-                            email_label: "Enter Email-Address1",
-                            password_label: "Enter Password1",
-                            button_label: "Sign in1",
-                            email_input_placeholder: "Email-Address1",
-                            password_input_placeholder: "Password1",
-                            link_text: "You have an account? Then login1",
+                            email_label: "Enter your Email-Address",
+                            password_label: "Enter your Password",
+                            button_label: "Sign in",
+                            email_input_placeholder: "Email-Address",
+                            password_input_placeholder: "Password",
+                            link_text: "You have an account? Then login",
                         },     
                         forgotten_password : {
-                            link_text: "Forgot password?3",
-                            password_label: "Enter Password3",
-                            email_input_placeholder: "Email-Address3",
-                            email_label: "Enter Email-Address3",
-                            button_label: "Send Email for Password reset3" 
+                            link_text: "Forgot password?",
+                            password_label: "Enter Password",
+                            email_input_placeholder: "Email-Address",
+                            email_label: "Enter your Email-Address",
+                            button_label: "Send Email for Password reset" 
                         },               
                    },
                 }}
