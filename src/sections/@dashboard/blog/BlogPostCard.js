@@ -42,10 +42,13 @@ BlogPostCard.propTypes = {
 
 export default function BlogPostCard({ post, index }) {
   const isDesktop = useResponsive('up', 'md');
-
-  const { cover, title, slug, view, comment, share, author, createdAt } = post;
+//  { title_image, title, slug, subtitle, view, comment, share, created_at, index }
+  const { user_profile_id, cover, title_image, title, slug, view, comment, share, author, createdAt } = post;
 
   const latestPost = index === 0 || index === 1 || index === 2;
+
+  const titleimage = `/images/${user_profile_id.substring(0, 13)}/blogpost_titles/${title_image}`;
+
 
   if (isDesktop && latestPost) {
     return (
@@ -73,7 +76,7 @@ export default function BlogPostCard({ post, index }) {
 
         <StyledOverlay />
 
-        <Image alt="cover" src="https://picsum.photos/200" sx={{ height: 360 }} />
+        <Image alt="cover" src={titleimage} sx={{ height: 360 }} />
       </Card>
     );
   }
@@ -106,7 +109,7 @@ export default function BlogPostCard({ post, index }) {
           }}
         />
 
-        <Image alt="cover" src="https://picsum.photos/200" ratio="4/3" />
+        <Image alt="cover" src={titleimage} ratio="4/3" />
       </Box>
       
       <PostContent
@@ -132,7 +135,9 @@ PostContent.propTypes = {
   createdAt: PropTypes.string,
 };
 
-export function PostContent({ title, slug, view, comment, share, createdAt, index }) {
+
+
+export function PostContent({ title_image, title, slug, subtitle, view, comment, share, created_at, index }) {
   const isDesktop = useResponsive('up', 'md');
 
   const linkTo = PATH_DASHBOARD.blog.view(paramCase(slug));
@@ -173,7 +178,7 @@ export function PostContent({ title, slug, view, comment, share, createdAt, inde
           }),
         }}
       >
-        {fDate(createdAt)}
+        {fDate(created_at)}
       </Typography>
 
       <Link component={NextLink} href={linkTo} color="inherit">
