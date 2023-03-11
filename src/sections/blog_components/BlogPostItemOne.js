@@ -59,7 +59,7 @@ export default function BlogPostItemOne({ post, path, onSiderbar }) {
   // const { title, duration, coverImg, createdAt } = frontmatter;
 
   const replace = `${path}dashboard/blog/post/${slug}`;
-  const href = `${path}dashboard/blog/post/[slug]`;
+  // const href = `${path}dashboard/blog/post/[slug]`;
 
   return (
     <Stack
@@ -84,7 +84,7 @@ export default function BlogPostItemOne({ post, path, onSiderbar }) {
         <MuiLink 
           component={NextLink} 
           prefetch={false} 
-          // sx={{ color: "warning.main" }}
+          sx={{ color: "secondary.light" }}
           href={replace}
         >
           <TextMaxLine variant={onSiderbar ? 'subtitle2' : 'h6'} asLink>
