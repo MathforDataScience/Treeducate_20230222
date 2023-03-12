@@ -11,7 +11,7 @@ import { styled } from '@mui/material/styles';
 // routes
 import { PATH_DASHBOARD } from '../../../../routes/paths';
 // utils
-import axios from '../../../../utils/axios';
+// import axios from '../../../../utils/axios';
 // layouts
 import DashboardLayout from '../../../../layouts/dashboard';
 // components
@@ -22,13 +22,13 @@ import { SkeletonPostDetails } from '../../../../components/skeleton';
 // sections
 import {
   BlogPostHero,
-  // BlogPostTags,
+  BlogPostTags,
   BlogPostCard,
   BlogPostCommentList,
   BlogPostCommentForm,
 } from '../../../../sections/@dashboard/blog';
 
-import { fetchArticle } from "../../../../utils/fetchArticles";
+import { fetchBlogPost_join_UserProfile } from "../../../../utils/fetchArticles";
 import { gridColumnLookupSelector } from '@mui/x-data-grid';
 
 import { fDate }      from '../../../../utils/formatTime';
@@ -72,17 +72,11 @@ export default function BlogPostPage() {
       // console.log("Marker 41")
       // console.log(slug)     
 
-      const data = await fetchArticle(slug);
-
- 
-
+      const data = await fetchBlogPost_join_UserProfile(slug);
       setPost(data)
       setLoadingPost(false);
 
     } catch (error) {
-
-      // console.log("Marker 28")
-      // console.error(error);
       setLoadingPost(false);
       setErrorMsg(error.message);
     }
@@ -93,13 +87,11 @@ export default function BlogPostPage() {
   //     const response = await axios.get('/api/blog/posts/recent', {
   //       params: { title },
   //     });
-
   //     setRecentPosts(response.data.recentPosts);
   //   } catch (error) {
   //     console.error(error);
   //   }
   // }, [title]);
-
   // useEffect(() => {
   //   getRecentPosts();
   // }, [getRecentPosts]);
@@ -111,13 +103,16 @@ export default function BlogPostPage() {
   }, [getPost, slug]);
 
 
-  console.log("Marker 42")
-  console.log(post) 
+  // console.log("Marker 42")
+  // console.log(post) 
+
+
+
 
   return (
     <>
       <Head>
-        <title>{`Blog: ${post?.title || ''} | Minimal UI`}</title>
+        <title>{`Blog: ${post?.title || ''}`}</title>
       </Head>
 
       <Container maxWidth={themeStretch ? false : 'lg'}>
@@ -138,94 +133,7 @@ export default function BlogPostPage() {
           ]}
         />
 
-
-      <Divider />
-      {!post ? <h5>Loading ...</h5> : 
-      <Container>
-        <Grid container spacing={3} justifyContent={{ md: 'center' }}>
-          <Grid item xs={12} md={8}>
-            <Typography
-              variant="h2"
-              component="h1"
-              sx={{
-                pb: 6,
-                pt: { xs: 6, md: 10 },
-              }}
-            >
-                          <BlogPostHero post={post} />
-             {/* {post.title}   */}
-            </Typography>
-
-            <Stack direction="row" justifyContent="space-between" spacing={1.5}>
-              {/* <Avatar src={author.picture} sx={{ width: 48, height: 48 }} /> */}
-              <Stack spacing={0.5} flexGrow={1}>
-                {/* <Typography variant="subtitle2">{author.name}</Typography> */}
-                <Stack
-                  direction="row"
-                  alignItems="center"
-                  sx={{ typography: 'caption', color: 'text.disabled' }}
-                >
-                {fDate(post.inserted_at)}
-                <DotStyle />
-                {duration}
-                </Stack>
-              </Stack>
-
-              {/* <Stack direction="row" alignItems="center">
-                <ShareButton />
-                <FavoriteButton checked={favorite} onChange={handleChangeFavorite} />
-              </Stack> */}
-            </Stack>
-
-            <Divider sx={{ my: 6 }} />
-
-            <Typography variant="h5" sx={{ mb: 5 }}><h6>...Description</h6>
-              {/* {description} */}
-            </Typography>
-            
-            {/* <Markdown content={post.excerpt} firstLetter /> */}
-            <Markdown
-              children={post.content}
-              sx={{
-                px: { md: 5 },
-              }}
-            />
-
-            <Stack direction="row" alignItems="center" flexWrap="wrap" sx={{ my: 6 }}>
-              <Typography variant="subtitle2" sx={{ mr: 1 }}>
-                Tags:
-              </Typography>
-              {/* {tags.map((tag) => (
-                <Chip key={tag} size="small" label={tag} sx={{ m: 0.5 }} onClick={() => {}} />
-              ))} */}
-            </Stack>
-
-            <Stack direction="row" alignItems="center" flexWrap="wrap">
-              <Typography variant="subtitle2" sx={{ mr: 1 }}>
-                Share:
-              </Typography>
-              {/* <SocialsButton initialColor links={shareLinks} simple={false} /> */}
-            </Stack>
-
-            <Divider sx={{ mt: 8 }} />
-
-            {/* <BlogAuthorInfo author={author} /> */}
-          </Grid>
-        </Grid>
-      </Container>
-      }
-
-      <Divider />
-
-
-
-
-
-
-
-
-
-        {/* {post && (
+        {post && (
           <Stack
             sx={{
               borderRadius: 2,
@@ -243,7 +151,7 @@ export default function BlogPostPage() {
                 px: { md: 5 },
               }}
             >
-              {post.description}
+              {post.excerpt}
             </Typography>
 
             <Markdown
@@ -261,6 +169,7 @@ export default function BlogPostPage() {
               }}
             >
               <Divider />
+              <BlogPostTags post={post} />
               <Divider />
             </Stack>
 
@@ -273,7 +182,7 @@ export default function BlogPostPage() {
                 <Typography variant="h4">Comments</Typography>
 
                 <Typography variant="subtitle2" sx={{ color: 'text.disabled' }}>
-                
+                  {/* ({post.comments.length}) */}
                 </Typography>
               </Stack>
 
@@ -287,7 +196,7 @@ export default function BlogPostPage() {
                 px: { md: 5 },
               }}
             >
-
+              {/* <BlogPostCommentList comments={post.comments} /> */}
 
               <Pagination
                 count={8}
@@ -299,14 +208,13 @@ export default function BlogPostPage() {
               />
             </Stack>
           </Stack>
-        )} 
-      */}
+        )}
 
         {errorMsg && !loadingPost && <Typography variant="h6">404 {errorMsg}</Typography>}
 
         {loadingPost && <SkeletonPostDetails />}
 
-        {/* {!!recentPosts.length && (
+        {!!recentPosts.length && (
           <>
             <Typography variant="h4" sx={{ my: 5 }}>
               Recent posts
@@ -326,14 +234,8 @@ export default function BlogPostPage() {
               ))}
             </Box>
           </>
-        )} */}
+        )}
       </Container>
     </>
   );
 }
-
-
-
-             // ({post.comments.length}) */}
-             // <BlogPostCommentList comments={post.comments} /> */}
-             // <BlogPostTags post={post} /> */}

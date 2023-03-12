@@ -20,9 +20,9 @@ import CustomBreadcrumbs from '../../../components/custom-breadcrumbs';
 import { BlogPostCard, BlogPostsSort, BlogPostsSearch } from '../../../sections/@dashboard/blog';
 
 // import { useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
-import { articlesState } from "../../../../atoms/articleAtom";
-import { fetchArticles } from "../../../utils/fetchArticles";
+// import { useRecoilState } from "recoil";
+// import { articlesState } from "../../../../atoms/articleAtom";
+import { fetchBlogPosts_join_UserProfile } from "../../../utils/fetchArticles";
 
 import  BlogSidebar                 from '../../../sections/blogsidebar/BlogSidebar';
 
@@ -65,9 +65,13 @@ export default function BlogPostsPage() {
   // const [articles, setArticle ] = useRecoilState(articlesState);
   const [articles, setArticle ] = useState([]);
   useEffect(() => {
-
+    // fetchArticles
+    // fetchBlogPost_join_UserProfile
+    
       const getData = async () => {
-          const data = await fetchArticles();
+          const data = await fetchBlogPosts_join_UserProfile();
+
+
           setArticle(data)
       };
       getData();
@@ -81,9 +85,8 @@ export default function BlogPostsPage() {
     setSortBy(event.target.value);
   };
 
-  console.log("Marker 21")
-  console.log(articles)
-  console.log(articles.length)
+  // console.log("Marker 29")
+  // console.log(articles)
 
   return (
     <>

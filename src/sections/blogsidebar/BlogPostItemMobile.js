@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 // next
-import NextLink from 'next/link';
+import NextLink from 'next/link'
+import { Link as MuiLink } from "@mui/material";
 // @mui
 import { styled } from '@mui/material/styles';
 import { Stack } from '@mui/material';
@@ -43,6 +44,8 @@ export default function BlogPostItemMobile({ post, path, onSiderbar }) {
   const as = `${path}/post/${post.slug}`;
   const href = `${path}/post/[slug]`;
 
+  // const replace = `${path}dashboard/blog/post/${slug}`;
+
   return (
     <Stack
       spacing={2}
@@ -62,11 +65,14 @@ export default function BlogPostItemMobile({ post, path, onSiderbar }) {
       /> */}
 
       <Stack spacing={onSiderbar ? 0.5 : 1}>
-        <NextLink passHref as={as} href={href}>
-          <TextMaxLine variant={onSiderbar ? 'subtitle2' : 'h6'} asLink>
-            {post.title}
-          </TextMaxLine>
-        </NextLink>
+       <MuiLink 
+          component={NextLink} 
+          prefetch={false} 
+          sx={{ color: "secondary.light" }}
+          href={as}
+        >
+            {post.title} 
+        </MuiLink> 
 
         <Stack
           direction="row"
@@ -85,3 +91,8 @@ export default function BlogPostItemMobile({ post, path, onSiderbar }) {
 
 
 // wieder rückandern und in der DB anpassen: {fDate(createdAt)}
+
+
+{/* <TextMaxLine variant={onSiderbar ? 'subtitle2' : 'h6'} asLink>
+{post.title} 
+</TextMaxLine>  */}

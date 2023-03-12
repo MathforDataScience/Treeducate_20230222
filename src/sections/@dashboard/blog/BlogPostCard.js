@@ -43,19 +43,21 @@ BlogPostCard.propTypes = {
 export default function BlogPostCard({ post, index }) {
   const isDesktop = useResponsive('up', 'md');
 //  { title_image, title, slug, subtitle, view, comment, share, created_at, index }
-  const { user_profile_id, cover, title_image, title, slug, view, comment, share, author, createdAt } = post;
+  const { user_profile_id, cover, title_image, title, slug, view, comment, share, author, createdAt, hub_user_profiles } = post;
 
   const latestPost = index === 0 || index === 1 || index === 2;
 
   const titleimage = `/images/${user_profile_id.substring(0, 13)}/blogpost_titles/${title_image}`;
+  const avatarimage = `/images/${user_profile_id.substring(0, 13)}/avatars/${hub_user_profiles.avatar}`;
 
+  // console.log(avatarimage)
 
   if (isDesktop && latestPost) {
     return (
       <Card>
         <Avatar
-          alt="Schax Schustermann"
-          src="https://i.pravatar.cc/60"
+          alt="Avatar"
+          src={avatarimage}
           sx={{
             top: 24,
             left: 24,
@@ -97,8 +99,8 @@ export default function BlogPostCard({ post, index }) {
         />
 
         <Avatar
-          alt="Schax Schustermann"
-          src="https://i.pravatar.cc/60"
+          alt="Avatar"
+          src={avatarimage}
           sx={{
             left: 24,
             zIndex: 9,
