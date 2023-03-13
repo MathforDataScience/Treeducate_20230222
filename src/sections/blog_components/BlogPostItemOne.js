@@ -87,9 +87,9 @@ export default function BlogPostItemOne({ post, path, onSiderbar }) {
           sx={{ color: "secondary.light" }}
           href={replace}
         >
-          <TextMaxLine variant={onSiderbar ? 'subtitle2' : 'h6'} asLink>
+          {/* <TextMaxLine variant={onSiderbar ? 'subtitle2' : 'h6'} asLink> */}
             {title}
-          </TextMaxLine>
+          {/* </TextMaxLine> */}
         </MuiLink>
 
         {/* <NextLink passHref as={as} href={href}>

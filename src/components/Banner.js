@@ -162,7 +162,8 @@ export default function Banner({ title, description, action, img, ...other }) {
                 alt = "Banner2"
                 src="/images/green_city1.jpg"
                 height = {200}
-                width = {300}                
+                width = {300}          
+                priority      
             />
         {/* </Item> */}
 

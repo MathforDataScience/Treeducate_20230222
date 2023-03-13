@@ -87,6 +87,9 @@ export default function AccountPopover() {
     push(path);
   };
 
+  // console.log("Marker 101")
+  // console.log(user)
+
   return (
     <>
       <IconButtonAnimate

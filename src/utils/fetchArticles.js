@@ -35,5 +35,14 @@ export const fetchBlogPost_join_UserProfile = async (capt) => {
 return data;
 }
 
+// -------------------------------------------------------------------------------
 
+export const fetchUserProfile = async (uid) => {
+    const { data, error } = await supabaseCl
+        .from("hub_user_profiles")
+        .select("*")
+        .eq("id", uid)
+        .single();
 
+return data;
+}

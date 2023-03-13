@@ -43,7 +43,7 @@ const Trending = () => {
     const { themeStretch } = useSettingsContext();
     const formatter = buildFormatter(deStrings);
 
-    const [articles, setArticle ] = useRecoilState(articlesState);
+    const [articles, setArticle ] = useState(null); //useRecoilState(articlesState);
     useEffect(() => {
 
         const getData = async () => {
